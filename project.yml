@@ -1,6 +1,6 @@
 name: Frank
 options:
-  bundleIdPrefix: co.visionairy.frank
+  bundleIdPrefix: com.jakobsendevelopment.frank
   deploymentTarget:
     iOS: "17.0"
     macOS: "14.0"
@@ -19,7 +19,7 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: co.visionairy.frank.phone
+        PRODUCT_BUNDLE_IDENTIFIER: com.jakobsendevelopment.frank.phone
         PRODUCT_NAME: Frank
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: YES
@@ -61,7 +61,7 @@ targets:
     settings:
       base:
         PRODUCT_NAME: Frank
-        PRODUCT_BUNDLE_IDENTIFIER: co.visionairy.frank.mac
+        PRODUCT_BUNDLE_IDENTIFIER: com.jakobsendevelopment.frank.mac
         INFOPLIST_FILE: Mac/Info.plist
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 537P4FPMZ4

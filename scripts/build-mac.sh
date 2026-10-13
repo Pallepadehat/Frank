@@ -13,6 +13,7 @@ APP="$STAGE/Frank.app"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$(swift build -c release --show-bin-path)/FrankMac" "$APP/Contents/MacOS/Frank"
 cp Mac/Info.plist "$APP/Contents/Info.plist"
+plutil -replace CFBundleIdentifier -string com.jakobsendevelopment.frank.mac "$APP/Contents/Info.plist"
 cp Shared/Fonts/*.ttf "$APP/Contents/Resources/"
 
 # Sign with your Apple Development certificate when there is one, so macOS remembers the

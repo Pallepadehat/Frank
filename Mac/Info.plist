@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleName</key>
-	<string>Frank</string>
 	<key>CFBundleDisplayName</key>
 	<string>Frank</string>
-	<key>CFBundleIdentifier</key>
-	<string>co.visionairy.frank.mac</string>
 	<key>CFBundleExecutable</key>
+	<string>Frank</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
 	<string>Frank</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
@@ -20,15 +20,15 @@
 	<string>14.0</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_frank._tcp</string>
+	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Frank talks to the character on your iPhone over your local network.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Hold ⌥Space and talk to ask Frank a question.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Frank turns what you say into text so it can answer you.</string>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_frank._tcp</string>
-	</array>
 </dict>
 </plist>
