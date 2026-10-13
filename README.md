@@ -154,12 +154,13 @@ iOS/                  iPhone app (SwiftUI)
 Shared/               pairing protocol and colors, used by both apps
 Shared/Fonts/         Fredoka and IBM Plex
 scripts/build-mac.sh  builds the Mac app without Xcode
+scripts/make-icons.sh draws both app icons from Frank's face code
 docs/images/          the pictures in this README
 ```
 
 - `Frank.xcodeproj` has both apps: **Frank** is the iPhone app and **FrankMac** the Mac app. `Package.swift` builds the Mac app for `scripts/build-mac.sh`.
 - `Frank.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). After adding files or changing settings, edit `project.yml` and run `xcodegen generate`.
-- Frank's face is drawn in code (`iOS/Face/FaceView.swift` and `BisonParts.swift`) on an 844 × 390 design canvas, and every expression comes from `FaceAnimator`.
+- Frank's face is drawn in code (`iOS/Face/FaceView.swift` and `BisonParts.swift`) on an 844 × 390 design canvas, and every expression comes from `FaceAnimator`. The app icons are drawn from the same code: after changing him, run `./scripts/make-icons.sh`.
 
 ## License
 

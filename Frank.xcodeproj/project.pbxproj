@@ -51,6 +51,7 @@
 		9956C1AAD64AA29DEA10FE15 /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = C55DB602230E7534301D905F /* MLX */; };
 		9A3BF0DA3462A56FF49B7F04 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */; };
 		9BB97D5B9742D996B559361D /* Ears.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A693BB0C8BE80AEBD0DA41 /* Ears.swift */; };
+		9E82B00E102C11B8692ACEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC17217D10C3466844F89199 /* Assets.xcassets */; };
 		9FC0AECD2657BFFF3F5A07ED /* Tokenizers in Frameworks */ = {isa = PBXBuildFile; productRef = 9AADB42F7C55D8B00FFB72AE /* Tokenizers */; };
 		A1F95C85CA76C74EFB1B2F7F /* PhoneServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3DA33366B38D1807EA84DF /* PhoneServer.swift */; };
 		A24606D3606811BA1D2CD91F /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */; };
@@ -60,6 +61,7 @@
 		B5C3E7E4BF26E9AA12B2F4BB /* ControlsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C76B5A8C4BA54272833F058 /* ControlsReader.swift */; };
 		C27F46D0A03509BE122F5204 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FA09E93E78F69B8126FE1 /* SessionStore.swift */; };
 		C3918CADFFF08305117D8E22 /* SpeechSegmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647B7DBEC319C9C35CF180 /* SpeechSegmenter.swift */; };
+		CB64687433B1550A141F9AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBABF1497DFE3F87D240AC87 /* Assets.xcassets */; };
 		D2E63D066C1DBB0A380C5032 /* ModelLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AEB4BC49E746B5B091DC06 /* ModelLibrary.swift */; };
 		DCCE4B42035FF530874FF43D /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B82BACE5E92E3E8E75A9EB /* Transcriber.swift */; };
 		DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB548A20555B63F1AB64CA4 /* Keychain.swift */; };
@@ -125,8 +127,10 @@
 		BE6928043D1723505078B5FC /* HotKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeys.swift; sourceTree = "<group>"; };
 		C1AEB4BC49E746B5B091DC06 /* ModelLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibrary.swift; sourceTree = "<group>"; };
 		C53161607698695FB30B0E9D /* FrankAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankAppView.swift; sourceTree = "<group>"; };
+		CBABF1497DFE3F87D240AC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFF4A787C52B0C9E3C5C0674 /* BisonParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisonParts.swift; sourceTree = "<group>"; };
 		DA419F2E01944AE3CA963739 /* FrankMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrankMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC17217D10C3466844F89199 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrankShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeardropLayer.swift; sourceTree = "<group>"; };
 		E5B82BACE5E92E3E8E75A9EB /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		76B63F5C03769A8737E2AC26 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DC17217D10C3466844F89199 /* Assets.xcassets */,
 				8B771257F2BDBD8164B830E9 /* Frank.entitlements */,
 				305D1D6E82947A9E905A897A /* App */,
 				BA5AE296642B1E0525CD605D /* Ears */,
@@ -308,6 +313,7 @@
 		A4E6984A6EE3E1F025146046 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				CBABF1497DFE3F87D240AC87 /* Assets.xcassets */,
 				2040BCCA5F7A65AF6FC32E58 /* App */,
 				6ACEA77928A08063DB54DC4A /* Character */,
 				1062C833E3278958FF8C4F6E /* Computer */,
@@ -468,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB64687433B1550A141F9AA9 /* Assets.xcassets in Resources */,
 				A59322BD32613CD9C0C219F6 /* Fredoka.ttf in Resources */,
 				9A3BF0DA3462A56FF49B7F04 /* IBMPlexMono-Medium.ttf in Resources */,
 				3B6C996E4107ED170C079F98 /* IBMPlexMono-Regular.ttf in Resources */,
@@ -481,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E82B00E102C11B8692ACEA6 /* Assets.xcassets in Resources */,
 				F84EEDA8C4C14839C8CA2A75 /* Fredoka.ttf in Resources */,
 				88A9DE841F90E0BC7F22EBE0 /* IBMPlexMono-Medium.ttf in Resources */,
 				A24606D3606811BA1D2CD91F /* IBMPlexMono-Regular.ttf in Resources */,

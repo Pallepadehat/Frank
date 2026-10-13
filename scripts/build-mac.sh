@@ -15,6 +15,12 @@ cp "$(swift build -c release --show-bin-path)/FrankMac" "$APP/Contents/MacOS/Fra
 cp Mac/Info.plist "$APP/Contents/Info.plist"
 plutil -replace CFBundleIdentifier -string com.jakobsendevelopment.frank.mac "$APP/Contents/Info.plist"
 cp Shared/Fonts/*.ttf "$APP/Contents/Resources/"
+# The app icon, from the same pictures the Xcode build uses.
+ICONSET="$STAGE/AppIcon.iconset"
+mkdir -p "$ICONSET"
+cp Mac/Assets.xcassets/AppIcon.appiconset/icon_*.png "$ICONSET/"
+iconutil -c icns "$ICONSET" -o "$APP/Contents/Resources/AppIcon.icns"
+rm -rf "$ICONSET"
 
 # Sign with your Apple Development certificate when there is one, so macOS remembers the
 # Screen Recording and Microphone permissions across rebuilds. Otherwise sign ad hoc.

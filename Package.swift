@@ -14,7 +14,7 @@ let package = Package(
             name: "FrankMac",
             dependencies: ["FrankShared"],
             path: "Mac",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist", "Assets.xcassets"]
         ),
     ]
 )

@@ -203,7 +203,12 @@ struct FaceView: View {
         let scale = max(size.width / design.width, size.height / design.height)
         ctx.translateBy(x: (size.width - design.width * scale) / 2, y: size.height - design.height * scale)
         ctx.scaleBy(x: scale, y: scale)
+        drawHead(f, in: &ctx)
+    }
 
+    /// Frank himself, in design coordinates (844 × 390, peeking up from the bottom edge), with no background.
+    /// Also used to draw the app icon.
+    static func drawHead(_ f: FaceAnimator.Frame, in ctx: inout GraphicsContext) {
         // Whole-body motion: breathing, talking bounce, idle hops, and leaning toward what he looks at.
         let bounce = -f.talk * 16 + f.breathe * 3 - f.hop
         let body = CGRect(x: 12, y: 44 + bounce, width: 820, height: 700)

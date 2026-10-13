@@ -8,6 +8,8 @@
 	<string>Frank</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
 	<key>CFBundleName</key>
 	<string>Frank</string>
 	<key>CFBundlePackageType</key>
