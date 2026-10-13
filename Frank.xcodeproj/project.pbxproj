@@ -8,24 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		0005C3CB8E19083F34658C9C /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61391B44FD29CBA45845D495 /* NSColor+Hex.swift */; };
+		0130E939CF1053F5ACFF8008 /* HuggingFace in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE7EB7938560835352A1A38 /* HuggingFace */; };
 		030631CFB83DA40592C36103 /* CursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF339D0BFCC329232E55BF8 /* CursorView.swift */; };
 		0C3AA64FDDB2723F986D12BC /* libFrankShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */; };
 		0E4002F875CF5723A499DA6E /* OFL-Fredoka.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */; };
 		119D939874408031A2EFEACA /* OFL-IBMPlex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */; };
 		15DF7B9893F4CFE629397E6D /* LiveVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489786BA502945B076F24816 /* LiveVoice.swift */; };
+		1CBC794269CB5BA64F9D3ACD /* Tidier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09544A8F8856C35236B36F16 /* Tidier.swift */; };
+		28879B43E169DA15321566E0 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = BBEFF45DF07FEA22CD01365F /* WhisperKit */; };
 		307CAEC5719ADB91E4E9A2AB /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */; };
+		315A6B88FA0E4C96B8C1D287 /* MLXLLM in Frameworks */ = {isa = PBXBuildFile; productRef = 27CC1D60445355B29F98ADAD /* MLXLLM */; };
 		334B8DEF999C52258AD39240 /* ScreenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897335E1D37E2939348C631 /* ScreenReader.swift */; };
+		3618454DCA5A802DBA67D005 /* EarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E311F65869ECC3BC7955FCA /* EarsView.swift */; };
 		36944375708AEA04B6120C2D /* IBMPlexSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */; };
 		3B6C996E4107ED170C079F98 /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */; };
 		402729C2BC6177B3FA369991 /* CursorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF730EDEDA1E5ACFB0C833DF /* CursorEngine.swift */; };
 		43DDA0CDB40FB2BB71088637 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAEDB88A3054EABCD853B73 /* PairingView.swift */; };
 		46FF2F8E132103F5146D4287 /* FrankLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB13126CD293CB35A1F524 /* FrankLink.swift */; };
+		4BAD59F6885B27285584E9A8 /* BisonParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4A787C52B0C9E3C5C0674 /* BisonParts.swift */; };
 		4CF7EE0F209867C014E96212 /* ComputerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B507E8C73A00D9DF3509F /* ComputerControl.swift */; };
 		52E35414AF9D4EFBBB89E63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295B4E2DF49F5F2C1FD9CDA /* AppDelegate.swift */; };
 		55840ACA8B6FDF8066C50939 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E77D41497CC5848279992 /* main.swift */; };
 		5644D252C674F8B1CFB75579 /* TeardropLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */; };
 		5713ECD88009EC859158004F /* OFL-Fredoka.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */; };
 		592EC5BA2B057BE2DE8F7C21 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16636A71B8541540E1CACF1C /* FaceView.swift */; };
+		5A69285691CED48B3E98B11B /* MLXLMCommon in Frameworks */ = {isa = PBXBuildFile; productRef = F0AF5B0237DFFA6256188314 /* MLXLMCommon */; };
 		6552DF3E3F26838039ABB419 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811030869409437525AE1677 /* Fonts.swift */; };
 		6D88A651DC1A86FADB9BD891 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75CD575786ED2C95C6586B /* Palette.swift */; };
 		77CA5B1EAA8700DC57A9F9B5 /* WebResearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9B125AF78F3F44F1EE035 /* WebResearch.swift */; };
@@ -39,7 +46,10 @@
 		91698283EF8C0004A1366EAB /* RealtimeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDC0681E0C0EBDE9F9D20E6 /* RealtimeSession.swift */; };
 		93A106AD45866AD7562F32A2 /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78783D42BC7F17874BEC12BE /* SoundButton.swift */; };
 		93C84FBFEA1CED191E9BDE10 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6C5D075D6291431B576F04 /* Settings.swift */; };
+		9956C1AAD64AA29DEA10FE15 /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = C55DB602230E7534301D905F /* MLX */; };
 		9A3BF0DA3462A56FF49B7F04 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */; };
+		9BB97D5B9742D996B559361D /* Ears.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A693BB0C8BE80AEBD0DA41 /* Ears.swift */; };
+		9FC0AECD2657BFFF3F5A07ED /* Tokenizers in Frameworks */ = {isa = PBXBuildFile; productRef = 9AADB42F7C55D8B00FFB72AE /* Tokenizers */; };
 		A1F95C85CA76C74EFB1B2F7F /* PhoneServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3DA33366B38D1807EA84DF /* PhoneServer.swift */; };
 		A24606D3606811BA1D2CD91F /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */; };
 		A4EA55C5DCE733FDF4876C29 /* FrankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31303759D9B26EF598F41562 /* FrankApp.swift */; };
@@ -47,10 +57,12 @@
 		AD24B7216DD57ED8B4AC8F24 /* ReportPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047B019CE2755A25C8CEEAE /* ReportPanel.swift */; };
 		B5C3E7E4BF26E9AA12B2F4BB /* ControlsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C76B5A8C4BA54272833F058 /* ControlsReader.swift */; };
 		C27F46D0A03509BE122F5204 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FA09E93E78F69B8126FE1 /* SessionStore.swift */; };
+		C3918CADFFF08305117D8E22 /* SpeechSegmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647B7DBEC319C9C35CF180 /* SpeechSegmenter.swift */; };
+		D2E63D066C1DBB0A380C5032 /* ModelLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AEB4BC49E746B5B091DC06 /* ModelLibrary.swift */; };
+		DCCE4B42035FF530874FF43D /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B82BACE5E92E3E8E75A9EB /* Transcriber.swift */; };
 		DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB548A20555B63F1AB64CA4 /* Keychain.swift */; };
 		E3CACF8C0401042872220CAC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA70AC6735104A10AF1676 /* Theme.swift */; };
 		E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */; };
-		B150A0000000000000000001 /* BisonParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150A0000000000000000002 /* BisonParts.swift */; };
 		E99444B47BA24AB445C52726 /* MenuIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */; };
 		EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433CF908CA5086D32E45A39D /* MacLink.swift */; };
 		EB717D1F356EE56E7D44389C /* FrankLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB13126CD293CB35A1F524 /* FrankLink.swift */; };
@@ -72,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		044E77D41497CC5848279992 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		09544A8F8856C35236B36F16 /* Tidier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tidier.swift; sourceTree = "<group>"; };
 		0C3DA33366B38D1807EA84DF /* PhoneServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneServer.swift; sourceTree = "<group>"; };
 		16636A71B8541540E1CACF1C /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
 		190FA09E93E78F69B8126FE1 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
@@ -83,10 +96,9 @@
 		36AB13126CD293CB35A1F524 /* FrankLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankLink.swift; sourceTree = "<group>"; };
 		433CF908CA5086D32E45A39D /* MacLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacLink.swift; sourceTree = "<group>"; };
 		43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFrank.swift; sourceTree = "<group>"; };
-		B150A0000000000000000002 /* BisonParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisonParts.swift; sourceTree = "<group>"; };
 		4897335E1D37E2939348C631 /* ScreenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenReader.swift; sourceTree = "<group>"; };
 		489786BA502945B076F24816 /* LiveVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVoice.swift; sourceTree = "<group>"; };
-		48DB076EF6F5361D5FB29CB9 /* Frank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48DB076EF6F5361D5FB29CB9 /* Frank.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Frank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Medium.ttf"; sourceTree = "<group>"; };
 		4A6C5D075D6291431B576F04 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IBMPlexSans.ttf; sourceTree = "<group>"; };
@@ -98,18 +110,25 @@
 		78783D42BC7F17874BEC12BE /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
 		78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "OFL-Fredoka.txt"; sourceTree = "<group>"; };
 		7AF339D0BFCC329232E55BF8 /* CursorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorView.swift; sourceTree = "<group>"; };
+		7E311F65869ECC3BC7955FCA /* EarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarsView.swift; sourceTree = "<group>"; };
 		811030869409437525AE1677 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		845544283BDB91669FBB7FB3 /* ModeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeIndicator.swift; sourceTree = "<group>"; };
+		84647B7DBEC319C9C35CF180 /* SpeechSegmenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSegmenter.swift; sourceTree = "<group>"; };
+		8B771257F2BDBD8164B830E9 /* Frank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Frank.entitlements; sourceTree = "<group>"; };
 		8FAEDB88A3054EABCD853B73 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "OFL-IBMPlex.txt"; sourceTree = "<group>"; };
 		9C75CD575786ED2C95C6586B /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A97C4E65F58D68436213125A /* Fredoka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fredoka.ttf; sourceTree = "<group>"; };
 		BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIcon.swift; sourceTree = "<group>"; };
 		BE6928043D1723505078B5FC /* HotKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeys.swift; sourceTree = "<group>"; };
+		C1AEB4BC49E746B5B091DC06 /* ModelLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibrary.swift; sourceTree = "<group>"; };
 		C53161607698695FB30B0E9D /* FrankAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankAppView.swift; sourceTree = "<group>"; };
-		DA419F2E01944AE3CA963739 /* Frank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFF4A787C52B0C9E3C5C0674 /* BisonParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisonParts.swift; sourceTree = "<group>"; };
+		DA419F2E01944AE3CA963739 /* FrankMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrankMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrankShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeardropLayer.swift; sourceTree = "<group>"; };
+		E5B82BACE5E92E3E8E75A9EB /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
+		E6A693BB0C8BE80AEBD0DA41 /* Ears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ears.swift; sourceTree = "<group>"; };
 		E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Regular.ttf"; sourceTree = "<group>"; };
 		EAD07A38AB0908FBDBA3DDF4 /* RealtimeHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeHost.swift; sourceTree = "<group>"; };
 		EDDC0681E0C0EBDE9F9D20E6 /* RealtimeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeSession.swift; sourceTree = "<group>"; };
@@ -119,6 +138,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0F1DA4EC47CBAAA1E1C7FC7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28879B43E169DA15321566E0 /* WhisperKit in Frameworks */,
+				9956C1AAD64AA29DEA10FE15 /* MLX in Frameworks */,
+				315A6B88FA0E4C96B8C1D287 /* MLXLLM in Frameworks */,
+				5A69285691CED48B3E98B11B /* MLXLMCommon in Frameworks */,
+				0130E939CF1053F5ACFF8008 /* HuggingFace in Frameworks */,
+				9FC0AECD2657BFFF3F5A07ED /* Tokenizers in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C80C5D41CE10E3F8DD756C8E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				48DB076EF6F5361D5FB29CB9 /* Frank.app */,
-				DA419F2E01944AE3CA963739 /* Frank.app */,
+				DA419F2E01944AE3CA963739 /* FrankMac.app */,
 				DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */,
 			);
 			name = Products;
@@ -228,7 +260,9 @@
 		76B63F5C03769A8737E2AC26 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				8B771257F2BDBD8164B830E9 /* Frank.entitlements */,
 				305D1D6E82947A9E905A897A /* App */,
+				BA5AE296642B1E0525CD605D /* Ears */,
 				9D7487456585ED802DEF0909 /* Face */,
 				3235F49CE86A8F0E06E16D25 /* Link */,
 				59CE7536ACA9E18F51D36E0E /* Sessions */,
@@ -260,10 +294,10 @@
 		9D7487456585ED802DEF0909 /* Face */ = {
 			isa = PBXGroup;
 			children = (
+				CFF4A787C52B0C9E3C5C0674 /* BisonParts.swift */,
 				24932D9F2A11696B42C3E15D /* BlobShape.swift */,
 				16636A71B8541540E1CACF1C /* FaceView.swift */,
 				43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */,
-				B150A0000000000000000002 /* BisonParts.swift */,
 			);
 			path = Face;
 			sourceTree = "<group>";
@@ -278,6 +312,19 @@
 				86AD7E9E76D9C1BBFC578214 /* Voice */,
 			);
 			path = Mac;
+			sourceTree = "<group>";
+		};
+		BA5AE296642B1E0525CD605D /* Ears */ = {
+			isa = PBXGroup;
+			children = (
+				E6A693BB0C8BE80AEBD0DA41 /* Ears.swift */,
+				7E311F65869ECC3BC7955FCA /* EarsView.swift */,
+				C1AEB4BC49E746B5B091DC06 /* ModelLibrary.swift */,
+				84647B7DBEC319C9C35CF180 /* SpeechSegmenter.swift */,
+				09544A8F8856C35236B36F16 /* Tidier.swift */,
+				E5B82BACE5E92E3E8E75A9EB /* Transcriber.swift */,
+			);
+			path = Ears;
 			sourceTree = "<group>";
 		};
 		D00719274B6D770BD7C26754 /* Voice */ = {
@@ -310,6 +357,7 @@
 			buildPhases = (
 				E312B855EF9CFBE56B206946 /* Sources */,
 				E5B024BF517918AE1BB1EA03 /* Resources */,
+				0F1DA4EC47CBAAA1E1C7FC7E /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,6 +365,12 @@
 			);
 			name = Frank;
 			packageProductDependencies = (
+				BBEFF45DF07FEA22CD01365F /* WhisperKit */,
+				C55DB602230E7534301D905F /* MLX */,
+				27CC1D60445355B29F98ADAD /* MLXLLM */,
+				F0AF5B0237DFFA6256188314 /* MLXLMCommon */,
+				5CE7EB7938560835352A1A38 /* HuggingFace */,
+				9AADB42F7C55D8B00FFB72AE /* Tokenizers */,
 			);
 			productName = Frank;
 			productReference = 48DB076EF6F5361D5FB29CB9 /* Frank.app */;
@@ -327,7 +381,6 @@
 			buildConfigurationList = 4691B9199F191BB5962B29A3 /* Build configuration list for PBXNativeTarget "FrankShared" */;
 			buildPhases = (
 				9C3732CE9997009F9515C2A3 /* Sources */,
-				E08CA337BB24C39C70EC6028 /* Copy Swift Objective-C Interface Header */,
 			);
 			buildRules = (
 			);
@@ -357,7 +410,7 @@
 			packageProductDependencies = (
 			);
 			productName = FrankMac;
-			productReference = DA419F2E01944AE3CA963739 /* Frank.app */;
+			productReference = DA419F2E01944AE3CA963739 /* FrankMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -388,6 +441,13 @@
 			);
 			mainGroup = 2DFF0E19ECD8B376C24A1D45;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8E9221C2B4A063FB45D00F48 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */,
+				613CF1C23551E69F782B3C42 /* XCRemoteSwiftPackageReference "mlx-swift" */,
+				3DA8A5882D1A919CAD2F647D /* XCRemoteSwiftPackageReference "mlx-swift-lm" */,
+				A59D3DE04E45DC654BFF842D /* XCRemoteSwiftPackageReference "swift-huggingface" */,
+				D751481AB44D313A44BC3540 /* XCRemoteSwiftPackageReference "swift-transformers" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4C569306A81CDA5D88BC99A9 /* Products */;
 			projectDirPath = "";
@@ -428,25 +488,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E08CA337BB24C39C70EC6028 /* Copy Swift Objective-C Interface Header */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(DERIVED_SOURCES_DIR)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
-			);
-			name = "Copy Swift Objective-C Interface Header";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/include/$(PRODUCT_MODULE_NAME)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		77853C719941A6981016C30F /* Sources */ = {
@@ -489,7 +530,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BAD59F6885B27285584E9A8 /* BisonParts.swift in Sources */,
 				F9B34BCDCBF2150825A3170D /* BlobShape.swift in Sources */,
+				9BB97D5B9742D996B559361D /* Ears.swift in Sources */,
+				3618454DCA5A802DBA67D005 /* EarsView.swift in Sources */,
 				592EC5BA2B057BE2DE8F7C21 /* FaceView.swift in Sources */,
 				A4EA55C5DCE733FDF4876C29 /* FrankApp.swift in Sources */,
 				88514E40422328ECAC975845 /* FrankAppView.swift in Sources */,
@@ -497,14 +541,17 @@
 				15DF7B9893F4CFE629397E6D /* LiveVoice.swift in Sources */,
 				EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */,
 				E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */,
-				B150A0000000000000000001 /* BisonParts.swift in Sources */,
 				79D2564A7879A83015D6E207 /* ModeIndicator.swift in Sources */,
+				D2E63D066C1DBB0A380C5032 /* ModelLibrary.swift in Sources */,
 				43DDA0CDB40FB2BB71088637 /* PairingView.swift in Sources */,
 				8047425F3370C49C2808CF3F /* Palette.swift in Sources */,
 				307CAEC5719ADB91E4E9A2AB /* SessionDetailView.swift in Sources */,
 				C27F46D0A03509BE122F5204 /* SessionStore.swift in Sources */,
 				93A106AD45866AD7562F32A2 /* SoundButton.swift in Sources */,
+				C3918CADFFF08305117D8E22 /* SpeechSegmenter.swift in Sources */,
 				E3CACF8C0401042872220CAC /* Theme.swift in Sources */,
+				1CBC794269CB5BA64F9D3ACD /* Tidier.swift in Sources */,
+				DCCE4B42035FF530874FF43D /* Transcriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +572,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 537P4FPMZ4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = Mac/Info.plist;
@@ -547,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/Frank.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 537P4FPMZ4;
@@ -585,7 +632,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 537P4FPMZ4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = Mac/Info.plist;
@@ -607,14 +653,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.FrankShared;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakobsendevelopment.frank.FrankShared;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 			};
 			name = Debug;
 		};
@@ -684,14 +730,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.FrankShared;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakobsendevelopment.frank.FrankShared;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 			};
 			name = Release;
 		};
@@ -699,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/Frank.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 537P4FPMZ4;
@@ -840,6 +887,82 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DA8A5882D1A919CAD2F647D /* XCRemoteSwiftPackageReference "mlx-swift-lm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift-lm";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.32.3;
+			};
+		};
+		613CF1C23551E69F782B3C42 /* XCRemoteSwiftPackageReference "mlx-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.32.3;
+			};
+		};
+		8E9221C2B4A063FB45D00F48 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/argmax-oss-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+		A59D3DE04E45DC654BFF842D /* XCRemoteSwiftPackageReference "swift-huggingface" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huggingface/swift-huggingface";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D751481AB44D313A44BC3540 /* XCRemoteSwiftPackageReference "swift-transformers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huggingface/swift-transformers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27CC1D60445355B29F98ADAD /* MLXLLM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DA8A5882D1A919CAD2F647D /* XCRemoteSwiftPackageReference "mlx-swift-lm" */;
+			productName = MLXLLM;
+		};
+		5CE7EB7938560835352A1A38 /* HuggingFace */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A59D3DE04E45DC654BFF842D /* XCRemoteSwiftPackageReference "swift-huggingface" */;
+			productName = HuggingFace;
+		};
+		9AADB42F7C55D8B00FFB72AE /* Tokenizers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D751481AB44D313A44BC3540 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = Tokenizers;
+		};
+		BBEFF45DF07FEA22CD01365F /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E9221C2B4A063FB45D00F48 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */;
+			productName = WhisperKit;
+		};
+		C55DB602230E7534301D905F /* MLX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 613CF1C23551E69F782B3C42 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLX;
+		};
+		F0AF5B0237DFFA6256188314 /* MLXLMCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DA8A5882D1A919CAD2F647D /* XCRemoteSwiftPackageReference "mlx-swift-lm" */;
+			productName = MLXLMCommon;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7191C25DEDDF59720F1E3809 /* Project object */;
 }

@@ -9,35 +9,32 @@ struct PairingView: View {
             SleepyFrank()
                 .frame(width: 220, height: 200)
 
-            VStack(alignment: .leading, spacing: 14) {
-                Text("Wake me up from your Mac")
-                    .font(.fredoka(32))
-                    .foregroundStyle(Color(hex: 0xFAF4EE))
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Wake Me Up from Your Mac")
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.white)
                 Text("Open Frank in your Mac's menu bar. Keep both on the same Wi-Fi and I'll find it.")
-                    .font(.plexSans(16))
-                    .foregroundStyle(Color(hex: Palette.inkSoft))
-                    .frame(maxWidth: 380, alignment: .leading)
-                HStack(spacing: 10) {
-                    ProgressView().tint(Color(hex: Palette.fur1))
-                    Text("Looking for your Mac")
-                        .font(.plexMono(13))
-                        .foregroundStyle(Color(hex: Palette.inkSoft))
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: 400, alignment: .leading)
+                HStack(spacing: 8) {
+                    ProgressView()
+                    Text("Looking for your Mac…")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
-                .padding(.top, 4)
-                Button(action: onPlay) {
-                    Text("Play without the Mac")
-                        .font(.plexSans(15).weight(.semibold))
-                        .foregroundStyle(Color(hex: 0xFAF4EE))
-                        .padding(.horizontal, 18)
-                        .frame(minHeight: 44)
-                        .background(Color(hex: Palette.panel), in: RoundedRectangle(cornerRadius: 14))
-                }
-                .buttonStyle(.plain)
+                .padding(.top, 2)
+                Button("Play Without the Mac", action: onPlay)
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .padding(.top, 6)
             }
         }
         .padding(.horizontal, 72)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
+        .preferredColorScheme(.dark)
+        .tint(Color(hex: Palette.fur1))
     }
 }
 

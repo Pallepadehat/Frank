@@ -14,14 +14,22 @@ struct FrankApp: App {
 
 struct RootView: View {
     @StateObject private var link = MacLink()
-    @StateObject private var live = LiveVoice()
+    @StateObject private var library: ModelLibrary
+    @StateObject private var live: LiveVoice
     @StateObject private var store = SessionStore()
     @State private var showApp = false
+    @State private var showEarsSetup = false
     @Environment(\.scenePhase) private var scenePhase
     @State private var animator = FaceAnimator()
     @State private var showPairing = true
     @State private var holdStart: DispatchWorkItem?
     @State private var holdingToAsk = false
+
+    init() {
+        let library = ModelLibrary()
+        _library = StateObject(wrappedValue: library)
+        _live = StateObject(wrappedValue: LiveVoice(ears: Ears(library: library)))
+    }
 
     var body: some View {
         ZStack {
@@ -52,18 +60,35 @@ struct RootView: View {
                 PairingView { withAnimation(.easeOut(duration: 0.3)) { showPairing = false } }
                     .transition(.opacity)
             }
+
         }
         .background(Color.black)
         .ignoresSafeArea()
         .phoneChrome()
+        .sheet(isPresented: $showEarsSetup) {
+            EarsSetupView(library: library) {
+                showEarsSetup = false
+                live.wake()
+            } onClose: {
+                showEarsSetup = false
+            }
+        }
         .fullScreenCover(isPresented: $showApp) {
-            FrankAppView(store: store, live: live, link: link) { showApp = false }
+            FrankAppView(store: store, live: live, link: link, library: library) { showApp = false }
         }
         .onAppear {
             link.onFace = { [animator] face in animator.receive(face, at: Date().timeIntervalSinceReferenceDate) }
             animator.localTalk = { [live] in live.level }
             wireLiveVoice()
             link.start()
+            #if DEBUG
+            // For screenshots: launch with `-FrankScreen app|ears|setup` to open a screen directly.
+            switch UserDefaults.standard.string(forKey: "FrankScreen") {
+            case "app", "ears": showPairing = false; showApp = true
+            case "setup": showPairing = false; showEarsSetup = true
+            default: break
+            }
+            #endif
         }
         .onChange(of: link.connected) { _, connected in
             if connected { withAnimation(.easeOut(duration: 0.4)) { showPairing = false } }
@@ -113,6 +138,7 @@ struct RootView: View {
         }
         live.onSessionStart = { [store] in store.start() }
         live.resumeContext = { [store] in store.recentText() }
+        live.onNeedsEars = { showEarsSetup = true }
         live.onSessionEnd = { [store] in store.end() }
         live.onUserTurn = { [store] item, asked in store.placeholder(itemID: item, asked: asked) }
         live.onUserWords = { [store] item, text, asked in store.heard(itemID: item, text: text, asked: asked) }

@@ -99,10 +99,11 @@ extension RealtimeHost {
 
     /// How he uses his tools. Always included, whatever the personality says.
     static let toolGuide = """
-    How the conversation works: the user's microphone is on the whole time, so you overhear everything they say. \
-    Treat all of that as background context and stay silent. You only reply when the app asks you to respond, which \
-    happens when the user holds the phone screen to ask you something. Their most recent words are the question; \
-    use the earlier talk as context.
+    How the conversation works: the user's phone listens the whole time and transcribes what they say on the \
+    device, so you get it as text (expect the odd misheard word, and work out what they meant). Treat all of that \
+    as background context and stay silent. You only reply when the app asks you to respond, which happens when \
+    the user holds the phone screen to ask you something. Their most recent words are the question; use the \
+    earlier talk as context. They may speak Danish or English: always reply in the language of the question.
 
     Most important rule: when a request needs a tool, call the tool FIRST with no words before it (the one \
     exception is web_research, described below). Never write \
@@ -146,19 +147,10 @@ extension RealtimeHost {
             "type": "realtime",
             "model": model,
             "instructions": instructions,
-            // He never talks out loud: replies are text, shown as speech bubbles.
+            // He never talks out loud: replies are text, shown as speech bubbles. And no audio goes in either:
+            // the phone transcribes speech on the device and sends text, which is far cheaper.
             "output_modalities": ["text"],
-            "audio": [
-                "input": [
-                    "format": ["type": "audio/pcm", "rate": 24000],
-                    // Everything the user says is transcribed into the conversation as context, but he only
-                    // answers when the phone asks for a response (while you hold the screen).
-                    "turn_detection": ["type": "server_vad", "threshold": 0.5, "prefix_padding_ms": 300,
-                                       "silence_duration_ms": 500, "create_response": false, "interrupt_response": false],
-                    "noise_reduction": ["type": "near_field"],
-                    "transcription": ["model": "gpt-4o-mini-transcribe"],
-                ],
-            ],
+            "audio": ["input": ["turn_detection": NSNull()]],
             "tools": tools,
             "tool_choice": "auto",
         ]

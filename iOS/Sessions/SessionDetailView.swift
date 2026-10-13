@@ -1,64 +1,44 @@
 import SwiftUI
 
-/// One session as a chat: what you said in grey, your questions in blue, his replies in white bubbles.
+/// One session as a conversation: what you said in grey, your questions in bubbles on the right,
+/// his replies on the left, and research reports as cards you can expand.
 struct SessionDetailView: View {
     @ObservedObject var store: SessionStore
     let id: UUID
-    @Environment(\.dismiss) private var dismiss
     private var session: FrankSession? { store.sessions.first { $0.id == id } }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 14) {
-                Button { dismiss() } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: .semibold))
-                        .frame(width: 40, height: 40)
-                        .background(Color.white.opacity(0.08), in: Circle())
-                }
-                .buttonStyle(.plain)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(session?.started.formatted(date: .abbreviated, time: .shortened) ?? "Session")
-                        .font(.fredoka(20))
-                        .foregroundStyle(.white)
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 10) {
                     if let session {
-                        Text("\(SessionRow.duration(session.duration)) · \(session.questionCount) asked · \(session.displayEntries.count) lines")
-                            .font(.plexMono(11))
-                            .foregroundStyle(Color(hex: Palette.inkSoft))
+                        Text("\(session.started.formatted(date: .complete, time: .shortened)) · \(SessionRow.duration(session.duration)) · \(session.questionCount) asked")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity)
+                            .padding(.bottom, 6)
+                    }
+                    ForEach(session?.displayEntries ?? []) { entry in
+                        EntryView(entry: entry).id(entry.id)
                     }
                 }
-                Spacer()
-                if let session {
-                    ShareLink(item: session.exportText) {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 16, weight: .semibold))
-                            .frame(width: 40, height: 40)
-                            .background(Color.white.opacity(0.08), in: Circle())
-                    }
-                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
             }
-            .foregroundStyle(.white)
-            .padding(.horizontal, 22)
-            .padding(.vertical, 12)
-
-            ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 10) {
-                        ForEach(session?.displayEntries ?? []) { entry in
-                            EntryView(entry: entry).id(entry.id)
-                        }
-                    }
-                    .padding(.horizontal, 22)
-                    .padding(.bottom, 24)
-                }
-                .onAppear { if let last = session?.entries.last { proxy.scrollTo(last.id, anchor: .bottom) } }
-                .onChange(of: session?.entries.count) { _, _ in
-                    if let last = session?.entries.last { withAnimation { proxy.scrollTo(last.id, anchor: .bottom) } }
+            .onAppear { if let last = session?.entries.last { proxy.scrollTo(last.id, anchor: .bottom) } }
+            .onChange(of: session?.entries.count) { _, _ in
+                if let last = session?.entries.last { withAnimation { proxy.scrollTo(last.id, anchor: .bottom) } }
+            }
+        }
+        .navigationTitle(session?.started.formatted(date: .abbreviated, time: .shortened) ?? "Session")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if let session {
+                ToolbarItem(placement: .primaryAction) {
+                    ShareLink(item: session.exportText)
                 }
             }
         }
-        .background(Color.black)
-        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
@@ -70,63 +50,40 @@ private struct EntryView: View {
         switch entry.kind {
         case .heard:
             Text(entry.text)
-                .font(.plexSans(14))
-                .foregroundStyle(Color(hex: Palette.inkSoft))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 4)
         case .asked:
             HStack {
                 Spacer(minLength: 120)
-                VStack(alignment: .trailing, spacing: 3) {
-                    Text("You asked")
-                        .font(.plexMono(10))
-                        .foregroundStyle(Color(hex: Palette.fur1))
-                    Text(entry.text)
-                        .font(.plexSans(15).weight(.medium))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 10)
-                        .background(BlobShape.linear, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                }
+                Text(entry.text)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 9)
+                    .background(Color(hex: Palette.fur3), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
         case .reply:
             HStack(alignment: .bottom, spacing: 8) {
                 MiniFrank().frame(width: 28, height: 25)
                 Text(entry.text)
-                    .font(.fredoka(16))
-                    .foregroundStyle(Color(hex: Palette.ink))
                     .padding(.horizontal, 14)
-                    .padding(.vertical, 10)
-                    .background(Color.white, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .padding(.vertical, 9)
+                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                 Spacer(minLength: 120)
             }
         case .report:
             let lines = entry.text.components(separatedBy: "\n\n")
-            VStack(alignment: .leading, spacing: 8) {
-                Button { withAnimation(.spring(duration: 0.3)) { open.toggle() } } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "doc.text.magnifyingglass").foregroundStyle(Color(hex: Palette.fur2))
-                        Text(lines.first ?? "Research")
-                            .font(.fredoka(16))
-                            .foregroundStyle(Color(hex: Palette.ink))
-                            .multilineTextAlignment(.leading)
-                        Spacer()
-                        Image(systemName: open ? "minus" : "plus")
-                            .font(.system(size: 12, weight: .heavy))
-                            .foregroundStyle(.white)
-                            .frame(width: 24, height: 24)
-                            .background(Circle().fill(Color(hex: Palette.fur2)))
-                    }
-                }
-                .buttonStyle(.plain)
+            DisclosureGroup(isExpanded: $open) {
                 Text(lines.dropFirst().joined(separator: "\n\n"))
-                    .font(.plexSans(14))
-                    .foregroundStyle(Color(hex: Palette.ink))
-                    .lineLimit(open ? nil : 3)
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 6)
+            } label: {
+                Label(lines.first ?? "Research", systemImage: "doc.text.magnifyingglass")
+                    .font(.headline)
             }
             .padding(14)
-            .background(Color(hex: 0xFFF3E6), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(Color(hex: Palette.fur2), lineWidth: 2))
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .padding(.leading, 36)
             .padding(.trailing, 80)
         }

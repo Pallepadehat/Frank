@@ -4,13 +4,13 @@ import UIKit
 #endif
 
 /// Shows which mode he's in: a solid border hugging the screen's own rounded corners (blue while he listens),
-/// plus a small label in the corner. Following your mouse is just a little eye icon. No glows.
+/// plus a small label in the corner. Asleep (just following your mouse) shows nothing at all. No glows.
 struct ModeIndicator: View {
     let state: LiveVoice.State
 
     private struct Look {
         let color: Color
-        let label: String?
+        let label: String
         let icon: String
         let border: CGFloat   // 0 = no border
         let pulse: Double     // pulses per second (opacity only)
@@ -20,7 +20,7 @@ struct ModeIndicator: View {
 
     private var look: Look {
         switch state {
-        case .asleep:    return Look(color: Color(hex: Palette.inkSoft), label: nil, icon: "eye.fill", border: 0, pulse: 0)
+        case .asleep:    return Look(color: .clear, label: "", icon: "", border: 0, pulse: 0)
         case .waking:    return Look(color: Color(hex: 0xFFD66B), label: "Waking up", icon: "sun.max.fill", border: 6, pulse: 1.6)
         case .listening: return Look(color: Self.blue, label: "Listening · hold to ask", icon: "ear", border: 10, pulse: 0)
         case .asking:    return Look(color: Self.blue, label: "I'm all ears", icon: "mic.fill", border: 16, pulse: 1.2)
@@ -48,20 +48,18 @@ struct ModeIndicator: View {
                         .strokeBorder(look.color, lineWidth: look.border)
                         .opacity(look.pulse > 0 ? 0.65 + 0.35 * wave : 1)
                 }
-                HStack(spacing: 7) {
-                    Image(systemName: look.icon)
-                        .font(.system(size: 14, weight: .bold))
-                    if let label = look.label {
-                        Text(label).font(.fredoka(16))
-                    }
+                if state != .asleep {
+                    Label(look.label, systemImage: look.icon)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 12)
+                        .frame(minHeight: 32)
+                        .background(Capsule().fill(look.color))
+                        .padding(.top, 14 + look.border)
+                        .padding(.leading, 24 + look.border)
                 }
-                .foregroundStyle(look.label == nil ? look.color.opacity(0.7) : .white)
-                .padding(.horizontal, look.label == nil ? 0 : 14)
-                .frame(minWidth: 34, minHeight: 34)
-                .background(Capsule().fill(look.label == nil ? Color.white.opacity(0.06) : look.color))
-                .padding(.top, 14 + look.border)
-                .padding(.leading, 24 + look.border)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .ignoresSafeArea()
         .allowsHitTesting(false)
