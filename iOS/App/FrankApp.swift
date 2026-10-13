@@ -91,7 +91,11 @@ struct RootView: View {
             #endif
         }
         .onChange(of: link.connected) { _, connected in
-            if connected { withAnimation(.easeOut(duration: 0.4)) { showPairing = false } }
+            if connected {
+                withAnimation(.easeOut(duration: 0.4)) { showPairing = false }
+            } else {
+                live.sleep()  // his brain is on the Mac
+            }
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { link.start() } else if phase == .background { link.stop() }
@@ -128,25 +132,15 @@ struct RootView: View {
 
     /// Connects the live voice to the Mac: keys, tools, captions and wake/sleep.
     private func wireLiveVoice() {
-        live.requestToken = { [link] done in
-            link.request(Packet(command: "realtimeToken")) { reply in done(reply?.text) }
-        }
-        live.runTool = { [link] name, arguments, done in
-            link.request(Packet(command: "tool", tool: name, text: arguments)) { reply in
-                done(reply?.text ?? "The Mac didn't answer.", reply?.image)
-            }
-        }
+        live.send = { [link] packet in link.send(packet) }
+        live.isConnected = { [link] in link.connected }
         live.onSessionStart = { [store] in store.start() }
-        live.resumeContext = { [store] in store.recentText() }
         live.onNeedsEars = { showEarsSetup = true }
         live.onSessionEnd = { [store] in store.end() }
         live.onUserTurn = { [store] item, asked in store.placeholder(itemID: item, asked: asked) }
         live.onUserWords = { [store] item, text, asked in store.heard(itemID: item, text: text, asked: asked) }
         live.onReply = { [store] text in store.reply(text) }
         live.onReport = { [store] text in store.report(text) }
-        live.onCaption = { [link] text, finished in
-            link.send(Packet(command: finished ? "captionDone" : "caption", text: text))
-        }
         live.onStateChange = { [link, animator] state in
             switch state {
             case .asleep:
@@ -170,11 +164,11 @@ struct RootView: View {
                 animator.localMood = .talking
             }
         }
-        link.onCommand = { [live] command in
-            switch command {
+        link.onCommand = { [live] packet in
+            switch packet.command {
             case "wake": live.wake()
             case "sleep": live.sleep()
-            default: break
+            default: live.handle(packet)
             }
         }
     }

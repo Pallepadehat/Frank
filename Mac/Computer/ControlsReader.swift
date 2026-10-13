@@ -10,6 +10,12 @@ enum ControlsReader {
         let label: String
         /// In overlay coordinates: points, top-left origin, y down.
         let rect: CGRect
+        /// The live element, so it can be pressed through Accessibility instead of clicked.
+        let element: AXUIElement?
+
+        /// Buttons, checkboxes, links, tabs and menus press reliably through Accessibility; fields and sliders
+        /// need a real click.
+        var pressable: Bool { element != nil && !ControlsReader.fieldKinds.contains(kind) && kind != "slider" }
     }
 
     private static let kinds: [String: String] = [
@@ -18,7 +24,7 @@ enum ControlsReader {
         "AXSearchField": "search field", "AXLink": "link", "AXSlider": "slider", "AXDisclosureTriangle": "disclosure",
         "AXIncrementor": "stepper", "AXTab": "tab", "AXMenuBarItem": "menu",
     ]
-    private static let fieldKinds: Set<String> = ["text field", "text area", "combo box", "search field"]
+    static let fieldKinds: Set<String> = ["text field", "text area", "combo box", "search field"]
 
     /// The frontmost app's name and its visible controls, in reading order. Stays within a small time budget.
     static func read(screen: CGSize, limit: Int = 140, budget: TimeInterval = 0.45) -> (app: String?, controls: [Control]) {
@@ -40,7 +46,7 @@ enum ControlsReader {
         let visible = CGRect(origin: .zero, size: screen)
         var queue = roots
         var visited = 0
-        var found: [(kind: String, label: String, rect: CGRect)] = []
+        var found: [(kind: String, label: String, rect: CGRect, element: AXUIElement)] = []
         var seen = Set<String>()
 
         while !queue.isEmpty, visited < 5000, Date() < deadline {
@@ -55,7 +61,7 @@ enum ControlsReader {
                     let key = "\(Int(rect.minX)),\(Int(rect.minY)),\(Int(rect.width)),\(Int(rect.height))"
                     if !seen.contains(key) {
                         seen.insert(key)
-                        found.append((kind, label, rect))
+                        found.append((kind, label, rect, element))
                     }
                 }
             }
@@ -68,9 +74,16 @@ enum ControlsReader {
 
         found.sort { abs($0.rect.minY - $1.rect.minY) > 6 ? $0.rect.minY < $1.rect.minY : $0.rect.minX < $1.rect.minX }
         let controls = found.prefix(limit).enumerated().map { i, item in
-            Control(id: "C\(i + 1)", kind: item.kind, label: item.label, rect: item.rect)
+            Control(id: "C\(i + 1)", kind: item.kind, label: item.label, rect: item.rect, element: item.element)
         }
         return (name, controls)
+    }
+
+    /// Presses a control the way VoiceOver would: no mouse involved, so it can't land on the wrong thing.
+    static func press(_ control: Control) -> Bool {
+        guard control.pressable, let element = control.element else { return false }
+        AXUIElementSetMessagingTimeout(element, 0.5)
+        return AXUIElementPerformAction(element, kAXPressAction as CFString) == .success
     }
 
     /// The focused element of the front app: where typing will go, and whether it's a password field.

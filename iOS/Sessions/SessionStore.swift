@@ -130,16 +130,6 @@ final class SessionStore: ObservableObject {
         update { $0.entries.append(TranscriptEntry(kind: .report, text: text, time: Date())) }
     }
 
-    /// Recent words from this session, for a fresh connection to pick up where the last one left off.
-    func recentText(limit: Int = 6000) -> String? {
-        guard let current else { return nil }
-        let text = current.displayEntries
-            .filter { $0.kind != .report }
-            .map { ($0.kind == .reply ? "Frank: " : "") + $0.text }
-            .joined(separator: "\n")
-        return text.isEmpty ? nil : String(text.suffix(limit))
-    }
-
     func delete(_ id: UUID) {
         if id == currentID { currentID = nil }
         sessions.removeAll { $0.id == id }

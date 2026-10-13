@@ -42,22 +42,22 @@ Prop your iPhone up under your Mac's screen and Frank peeks up from the bottom o
 
 Frank is two apps that find each other on your Wi-Fi:
 
-- **The iPhone app** draws Frank's face, transcribes speech on the device, and runs a text-only [OpenAI Realtime](https://platform.openai.com/docs/guides/realtime) session.
-- **The Mac menu bar app** holds your OpenAI key, sees the screen, draws his cursor and speech bubbles, and does the clicking and typing.
+- **The iPhone app** is his face and ears. It draws Frank and turns what you say into text on the device.
+- **The Mac menu bar app** is his brain and hands. It holds your OpenAI key, talks to the model, sees the screen, draws his cursor and speech bubbles, and does the clicking and typing.
 
 ```
- iPhone (Frank's face)                         Mac (menu bar app)
- ─────────────────────                         ──────────────────
- mic ─► Whisper (on device) ─► text ─► OpenAI Realtime ◄── 10-minute key ── mints the key (your real key stays here)
-           │  tool calls  ───────────────────► look at the screen, point, click, type, research
-           │  replies     ───────────────────► speech bubble next to his cursor
-           └──── Bonjour (_frank._tcp), newline JSON over TCP ────┘
+ iPhone (face and ears)                      Mac (brain and hands)
+ ──────────────────────                      ─────────────────────
+ mic ─► Whisper (on device) ─► text ───────► gpt-6-luna (Responses API) ◄─► tools: look, point,
+                                                                              research, press, click, type
+ chirp + transcript ◄──── replies ──────────  speech bubble by his cursor
+        └──── Bonjour (_frank._tcp), newline JSON over TCP ────┘
 ```
 
-1. The phone finds the Mac with Bonjour and asks it for a short-lived session key. Your real OpenAI key never leaves the Mac.
-2. While Frank is awake, the phone splits what you say into phrases, transcribes them with Whisper on the device (optionally cleaned up by a small local language model) and adds the text to the conversation. Frank doesn't reply yet.
-3. When you hold the screen, everything you say until you let go is your question. The phone transcribes it straight away and asks for a reply. If Frank wants to look or act, the tool call goes to the Mac, which runs it and sends back the result (for example, the text on screen with positions and a screenshot).
-4. His reply streams to the Mac as a speech bubble. If the connection drops (sessions time out after an hour), the phone reconnects and reminds him what was said, so a session can run all day.
+1. While Frank is awake, the phone splits what you say into phrases, transcribes them with Whisper on the device (optionally cleaned up by a small local language model) and sends the text to the Mac as background. Frank doesn't reply yet.
+2. When you hold the screen, everything you say until you let go is your question. The phone transcribes it straight away and sends it to the Mac.
+3. The Mac asks the model, which answers or calls tools. Tools run right there on the Mac: it reads the screen (text, controls and a screenshot), points, researches, or uses the computer, then hands the result back. This loops (look, act, check) until he has his answer, up to 24 steps per question.
+4. His reply streams into a speech bubble by his cursor, and the phone chirps and saves it in the session's transcript.
 
 ### Models
 
@@ -65,10 +65,10 @@ Frank is two apps that find each other on your Wi-Fi:
 | --- | --- | --- |
 | Speech to text | Whisper Small or Whisper Large v3 Turbo ([WhisperKit](https://github.com/argmaxinc/argmax-oss-swift)) | On the iPhone |
 | Transcript cleanup (optional) | Qwen2.5 1.5B Instruct, 4-bit ([MLX](https://github.com/ml-explore/mlx-swift-lm)) | On the iPhone |
-| Frank himself (text in, text out, tools) | `gpt-realtime-2.1-mini` | OpenAI |
-| Web research reports | `gpt-6.1-sol` with web search | OpenAI |
+| Frank himself (answers, tools, using the computer) | `gpt-6-luna` (Responses API) | OpenAI, called from the Mac |
+| Web research reports | `gpt-6-luna` with web search | OpenAI, called from the Mac |
 
-The on-device models are downloaded inside the app (**Frank → Ears**), not bundled. The OpenAI models are set in `iOS/Voice/LiveVoice.swift`, `Mac/Voice/RealtimeHost.swift` and `Mac/Voice/WebResearch.swift`; the realtime model has to match in the first two.
+The on-device models are downloaded inside the app (**Frank → Ears**), not bundled. The OpenAI models are set in `Mac/Voice/Brain.swift` and `Mac/Voice/WebResearch.swift`.
 
 ## Getting started
 
@@ -128,7 +128,7 @@ The menu bar also has his mood, cursor size (48 to 120 pt), pointer trail, curso
 
 ## Privacy and safety
 
-- **Your OpenAI key stays on your Mac**, in `~/Library/Application Support/Frank/keys.json`, readable only by your user. The phone only ever gets a key that expires after 10 minutes.
+- **Your OpenAI key stays on your Mac**, in `~/Library/Application Support/Frank/keys.json`, readable only by your user. Only the Mac talks to OpenAI; the phone never sees the key.
 - **Audio never leaves your iPhone.** Speech is transcribed on the device. What goes to OpenAI is the resulting text, screenshots and on-screen text when he looks at the screen, and your questions when he researches something. Model downloads come from Hugging Face. Nothing goes anywhere else.
 - **Using the computer is opt-in.** It needs Accessibility permission, and you can switch it off any time with **Let Him Use the Computer** in the menu. He only acts when you ask, confirms before anything hard to undo, treats text on screen as information rather than instructions, refuses password fields and logout, lock and force-quit shortcuts, and stops instantly on ⌃⌥S.
 - **Session transcripts stay on your phone.**
@@ -141,14 +141,14 @@ Issues and pull requests are welcome. The code is plain Swift and SwiftUI. The M
 Mac/                  menu bar app
   App/                launch, menu, settings, shortcuts, API keys, fonts
   Character/          his cursor, speech bubbles and research report card
-  Voice/              the Mac's half of the Realtime session and its tools, web research
+  Voice/              his brain (Responses API loop), instructions, tools and web research
   Computer/           reading the screen and controls, clicking and typing
   Link/               the server the phone connects to
 iOS/                  iPhone app (SwiftUI)
   App/                app entry, pairing screen, sound button
   Face/               Frank the bison and his animated face
   Ears/               on-device speech recognition, transcript cleanup and model downloads
-  Voice/              the Realtime session on the phone
+  Voice/              the session on the phone: listening, asking, chirps
   Sessions/           session history and transcripts
   Link/               finding and talking to the Mac
 Shared/               pairing protocol and colors, used by both apps

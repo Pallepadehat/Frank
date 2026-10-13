@@ -1,20 +1,21 @@
 import AppKit
 import FrankShared
 
-/// The Mac's half of live voice. The phone runs the OpenAI Realtime session (its mic, its speaker);
-/// the Mac hands it a short-lived key, runs its tools (look, point, and use the computer) and shows captions.
+/// The Mac's side of Frank. The phone is his ears and face: it sends what it heard as text. Here his brain
+/// answers, runs his tools (look, point, research and use the computer) and shows his replies as speech bubbles.
 /// Everything here runs on the main thread, alongside the cursor it drives.
 @MainActor
-final class RealtimeHost {
-    static let model = "gpt-realtime-2.1-mini"
+final class FrankHost {
+    private let brain = Brain()
+    /// Sends a packet to the phone (his chirps, the transcript, when he's done).
+    var send: ((Packet) -> Void)?
+    private var spokeThisTurn = false
 
     private let overlay: CursorOverlay
     private let reports = ReportPanel()
     private var snapshot: ScreenSnapshot?
     private var captionClear: DispatchWorkItem?
     private var readingDone: DispatchWorkItem?
-    /// Tools run one at a time, in the order he asked for them.
-    private var toolChain: Task<Void, Never>?
     /// After the stop hotkey, his actions are refused for a few seconds.
     private var stoppedUntil = 0.0
     /// True while he's awake and talking with you (false = follow mode).
@@ -23,56 +24,84 @@ final class RealtimeHost {
 
     init(overlay: CursorOverlay) {
         self.overlay = overlay
+        brain.onText = { [weak self] text in
+            guard let self else { return }
+            if !self.spokeThisTurn {
+                self.spokeThisTurn = true
+                self.send?(Packet(command: "speaking", text: text))
+            }
+            self.caption(text)
+        }
+        brain.onReply = { [weak self] text in
+            guard let self else { return }
+            self.spokeThisTurn = false
+            self.captionDone(text)
+            self.send?(Packet(command: "reply", text: text))
+        }
+        brain.runTool = { [weak self] name, arguments in
+            guard let self else { return ("Frank isn't here.", nil) }
+            let result = await self.runTool(name, arguments: arguments)
+            if name == "web_research", let range = result.text.range(of: Self.reportMarker) {
+                self.send?(Packet(command: "report", text: String(result.text[range.upperBound...])))
+            }
+            return result
+        }
+        brain.onFinished = { [weak self] sleep in
+            self?.send?(Packet(command: "turnDone", text: sleep ? "sleep" : nil))
+        }
+        brain.onError = { [weak self] message in
+            self?.captionDone(message)
+        }
     }
 
     private var engine: CursorEngine { overlay.view.engine }
 
-    /// Handles a request from the phone. `reply` sends a packet back to that phone.
+    /// Handles a packet from the phone.
     func handle(_ packet: Packet, reply: @escaping (Packet) -> Void) {
         switch packet.command {
-        case "realtimeToken":
-            Task { @MainActor in
-                do {
-                    let token = try await Self.mintToken()
-                    reply(Packet(command: "realtimeToken", callID: packet.callID, text: token))
-                } catch {
-                    reply(Packet(command: "realtimeToken", callID: packet.callID, text: nil, image: nil))
-                    self.showCaption(error.localizedDescription, for: 6)
-                }
-            }
         case "awake":
             setAwake(true)
         case "asleep":
             setAwake(false)
-        case "caption":
-            // His reply, streaming in. It shows as a speech bubble by his cursor (or above the phone).
-            let text = packet.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        case "heard":
+            // Something said in the background, already turned into text on the phone.
+            brain.hear(packet.text ?? "")
+        case "ask":
+            // You held his face and asked: he answers, or gets on with the task.
+            spokeThisTurn = false
             readingDone?.cancel()
-            showCaption(text.isEmpty ? nil : text, for: 0)
-            if !text.isEmpty { setSpeaking(true) }
-        case "captionDone":
-            // Keep the bubble (and his pointing) up long enough to read, then tidy away.
-            let text = packet.text ?? ""
-            if !text.isEmpty { showCaption(text, for: 0) }
-            let words = Double(text.split(separator: " ").count)
-            let readTime = min(max(2.8, 1.2 + words * 0.32), 12) + 3
-            readingDone?.cancel()
-            let work = DispatchWorkItem { [weak self] in
-                self?.setSpeaking(false)
-                self?.showCaption(nil, for: 0)
-            }
-            readingDone = work
-            DispatchQueue.main.asyncAfter(deadline: .now() + readTime, execute: work)
-        case "tool":
-            let previous = toolChain
-            toolChain = Task { @MainActor in
-                await previous?.value
-                let result = await self.runTool(packet.tool ?? "", arguments: packet.text ?? "{}")
-                reply(Packet(command: "toolResult", callID: packet.callID, text: result.text, image: result.image))
-            }
+            showCaption(nil, for: 0)
+            brain.ask(packet.text ?? "")
+        case "hi":
+            spokeThisTurn = false
+            brain.ask("(Say a quick, cheerful hi in under eight words.)")
+        case "missed":
+            captionDone("Sorry, I didn't catch that. Hold my face and try again.")
         default:
             break
         }
+    }
+
+    /// His reply, streaming in. It shows as a speech bubble by his cursor (or above the phone).
+    private func caption(_ text: String) {
+        let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        readingDone?.cancel()
+        showCaption(text.isEmpty ? nil : text, for: 0)
+        if !text.isEmpty { setSpeaking(true) }
+    }
+
+    /// Keeps the bubble (and his pointing) up long enough to read, then tidies away.
+    private func captionDone(_ text: String) {
+        if !text.isEmpty { showCaption(text, for: 0) }
+        let words = Double(text.split(separator: " ").count)
+        let readTime = min(max(2.8, 1.2 + words * 0.32), 12) + 3
+        readingDone?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            self?.setSpeaking(false)
+            self?.showCaption(nil, for: 0)
+        }
+        readingDone = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + readTime, execute: work)
     }
 
     /// FRANK_DEMO_RESEARCH="question": runs a real research call and saves pictures of the card.
@@ -99,6 +128,7 @@ final class RealtimeHost {
     }
 
     func setAwake(_ on: Bool) {
+        if on != awake { brain.reset() }  // each session starts a fresh conversation
         awake = on
         engine.awake = on
         engine.brainMood = nil
@@ -115,6 +145,8 @@ final class RealtimeHost {
 
     /// The stop hotkey: refuse any further actions for a moment and bring the cursor home.
     func stopActions() {
+        brain.cancel()
+        send?(Packet(command: "turnDone"))
         stoppedUntil = CACurrentMediaTime() + 6
         queue = []
         engine.dragging = false
@@ -250,6 +282,15 @@ final class RealtimeHost {
             }
             let right = args["right"] as? Bool ?? false
             let count = (args["double"] as? Bool ?? false) ? 2 : 1
+            // Buttons, links, tabs and menus are pressed through Accessibility: exact, and the mouse stays put.
+            if !right, count == 1, let id = args["target_id"] as? String, let control = snapshot?.control(id), control.pressable {
+                await fly(to: target.point)
+                view.clickEffect(at: target.point)
+                if ControlsReader.press(control) {
+                    try? await Task.sleep(for: .milliseconds(450))
+                    return await look(prefix: "Pressed \"\(target.name)\".")
+                }
+            }
             let saved = ComputerControl.mouseLocation
             await fly(to: target.point)
             view.clickEffect(at: target.point, right: right)

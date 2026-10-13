@@ -8,7 +8,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private let overlay = CursorOverlay()
     private let server = PhoneServer()
     private var statusItem: NSStatusItem!
-    private lazy var host = RealtimeHost(overlay: overlay)
+    private lazy var host = FrankHost(overlay: overlay)
 
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -32,6 +32,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             if names.isEmpty, self?.host.awake == true { self?.host.setAwake(false) }
         }
         server.onRequest = { [weak self] packet, reply in self?.host.handle(packet, reply: reply) }
+        host.send = { [weak self] packet in self?.server.broadcast(packet) }
         server.start()
         host.onChange = { [weak self] in self?.refreshIcon() }
 
@@ -168,7 +169,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         text.autoresizingMask = [.width]
         text.isRichText = false
         text.font = NSFont.systemFont(ofSize: 13)
-        text.string = RealtimeHost.personality
+        text.string = FrankHost.personality
         text.textContainerInset = NSSize(width: 6, height: 6)
         scroll.documentView = text
         alert.accessoryView = scroll
@@ -177,8 +178,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         alert.addButton(withTitle: "Reset to Default")
         alert.window.initialFirstResponder = text
         switch alert.runModal() {
-        case .alertFirstButtonReturn: RealtimeHost.personality = text.string
-        case .alertThirdButtonReturn: RealtimeHost.personality = ""
+        case .alertFirstButtonReturn: FrankHost.personality = text.string
+        case .alertThirdButtonReturn: FrankHost.personality = ""
         default: return
         }
         restartIfAwake()

@@ -15,8 +15,8 @@ final class MacLink: ObservableObject {
     @Published private(set) var currentMac: String?
     /// The Mac picked in the speaker panel. Remembered, so the phone goes back to it on launch.
     @Published private(set) var preferredMac: String? = UserDefaults.standard.string(forKey: "preferredMac")
-    /// Commands from the Mac, like "wake" and "sleep".
-    var onCommand: ((String) -> Void)?
+    /// Commands from the Mac, like "wake" and "sleep", and his brain's replies.
+    var onCommand: ((Packet) -> Void)?
     private var waiting: [String: (Packet?) -> Void] = [:]
 
     var onFace: ((FaceState) -> Void)?
@@ -109,11 +109,11 @@ final class MacLink: ObservableObject {
         link.onPacket = { [weak self] packet in
             if let name = packet.hello { self?.macName = name }
             if let face = packet.face { self?.onFace?(face) }
-            guard let self, let command = packet.command else { return }
+            guard let self, packet.command != nil else { return }
             if let callID = packet.callID, let done = self.waiting.removeValue(forKey: callID) {
                 done(packet)
             } else {
-                self.onCommand?(command)
+                self.onCommand?(packet)
             }
         }
         self.link = link

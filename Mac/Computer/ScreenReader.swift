@@ -30,6 +30,11 @@ struct ScreenSnapshot {
         return nil
     }
 
+    func control(_ id: String) -> ControlsReader.Control? {
+        let id = id.trimmingCharacters(in: .whitespaces).uppercased()
+        return controls.first { $0.id == id }
+    }
+
     /// What's under (or right next to) a point: the smallest word, line or control there.
     func target(near point: CGPoint) -> Target? {
         var candidates: [Target] = controls.map { Target(id: $0.id, text: $0.label.isEmpty ? $0.kind : $0.label, rect: $0.rect) }
