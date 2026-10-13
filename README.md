@@ -6,7 +6,7 @@ A blueberry character who lives on an iPhone under your Mac's screen and points 
 
 How it works: the phone runs an OpenAI Realtime session (`gpt-realtime-2.1-mini`, text output only) over a WebSocket. Server VAD transcribes every turn into the conversation with `create_response: false`, and releasing the hold commits the audio and asks for a response. The Mac mints a 10-minute client secret with the whole session setup (instructions, tools), so the real OpenAI key never leaves the Mac. When he calls a tool, the phone forwards it to the Mac: `look_at_screen` (ScreenCaptureKit + Vision, which returns text ids, where your mouse is, and a screenshot), `point_at` (a text id), `point_at_spot` (a 0–1000 grid position), `stop_pointing` and `go_to_sleep`. His text streams to the Mac as the speech bubble.
 
-**Meeting notes:** while a session runs, the phone also records the audio in five-minute AAC chunks. Each chunk goes to the Mac, which transcribes it with speaker labels (`gpt-4o-transcribe-diarize`, falling back to `gpt-transcribe`) and writes the session to `~/Documents/Frank Notes/<date> <id>/` (`notes.md`, `session.json`, `audio/`). Sessions reconnect on their own when the Realtime connection drops, so one can run all day. In the phone's Frank screen, a session's **Copy prompt for agent** button copies a prompt that points an agent at those files. **Open Meeting Notes** in the Mac menu opens the folder.
+**Long sessions:** if the Realtime connection drops (sessions time out after an hour), the phone reconnects on its own and reminds him what was said, so a session can run all day. The phone keeps every session's transcript; tap the faint button in the corner of his face to see past sessions.
 
 **Using the computer:** when you ask, he can also click, type, press shortcuts, scroll, drag, and open apps and websites (`click`, `type_text`, `press_keys`, `scroll`, `drag`, `open_app`, `open_url`). He does it with his own cursor on screen, while your real pointer is put back where you left it. It needs Accessibility permission for Frank. Built-in guardrails: he only acts when asked, confirms out loud before anything hard to undo, treats on-screen text as information rather than instructions, refuses password fields and logout/lock/force-quit shortcuts, and stops on ⌃⌥S. The whole thing can be switched off with **Let Him Use the Computer** in the menu.
 
@@ -47,13 +47,12 @@ Mac/                  menu bar app (Swift package target FrankMac)
   Character/          the big cursor, speech bubbles and research report card
   Voice/              the Mac's half of the Realtime session and its tools, web research
   Computer/           reading the screen and controls, clicking and typing
-  Notes/              transcribing recorded audio into meeting notes files
   Link/               the server the phone connects to
 iOS/                  iPhone app (SwiftUI, Xcode target Frank)
   App/                app entry, pairing screen, sound button
   Face/               the blob and his animated face
   Voice/              the Realtime session on the phone
-  Sessions/           session history, recording chunks, the Frank screen
+  Sessions/           session history and transcripts, the Frank screen
   Link/               finding and talking to the Mac
 Shared/               pairing protocol (Bonjour _frank._tcp, newline JSON) and colors, used by both apps
 Shared/Fonts/         Fredoka and IBM Plex, bundled into both apps

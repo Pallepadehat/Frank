@@ -29,10 +29,8 @@ final class LiveVoice: NSObject, ObservableObject {
     /// Recent transcript, handed to a fresh connection so he keeps context in long sessions.
     var resumeContext: (() -> String?)?
 
-    /// Records the whole session's audio for proper transcription (meeting notes).
-    let recorder = ChunkRecorder()
     /// True from wake until you end the session. Dropped connections (sessions time out after an hour)
-    /// reconnect on their own while this is set, and the recording carries on.
+    /// reconnect on their own while this is set.
     private var wantAwake = false
     private var reconnecting = false
 
@@ -107,7 +105,6 @@ final class LiveVoice: NSObject, ObservableObject {
         let wasRunning = wantAwake || socket != nil
         wantAwake = false
         reconnecting = false
-        recorder.finish()
         if wasRunning { onSessionEnd?() }
         askedItems = []
         awaitingQuestion = false
@@ -169,12 +166,12 @@ final class LiveVoice: NSObject, ObservableObject {
         socket.resume()
         receive(on: socket)
         if reconnecting {
-            // Same session, new connection: the mic and recording never stopped. Remind him what was said.
+            // Same session, new connection: the mic never stopped. Remind him what was said.
             reconnecting = false
             if let context = resumeContext?(), !context.isEmpty {
                 send(["type": "conversation.item.create",
                       "item": ["type": "message", "role": "user",
-                               "content": [["type": "input_text", "text": "(Context: what I said earlier in this session, from my notes. Don't reply to this.)\n" + context]]]])
+                               "content": [["type": "input_text", "text": "(Context: what I said earlier in this session, from earlier. Don't reply to this.)\n" + context]]]])
             }
             if askWhenReady { ask() } else { setState(holding ? .asking : .listening) }
             return
@@ -195,7 +192,7 @@ final class LiveVoice: NSObject, ObservableObject {
         }
     }
 
-    /// The connection dropped mid-session: get a new key and carry on, keeping the mic and recording running.
+    /// The connection dropped mid-session: get a new key and carry on, keeping the mic running.
     private func reconnect(attempt: Int = 0) {
         socket = nil
         responseActive = false
@@ -208,7 +205,7 @@ final class LiveVoice: NSObject, ObservableObject {
                 if let token {
                     self.connect(token)
                 } else {
-                    // The Mac may be briefly away; keep trying (the recording continues meanwhile).
+                    // The Mac may be briefly away; keep trying.
                     DispatchQueue.main.asyncAfter(deadline: .now() + min(30, 2 + Double(attempt) * 3)) {
                         self.reconnect(attempt: attempt + 1)
                     }
@@ -378,7 +375,6 @@ final class LiveVoice: NSObject, ObservableObject {
         converter = AVAudioConverter(from: inputFormat, to: wireFormat)
         input.removeTap(onBus: 0)
         input.installTap(onBus: 0, bufferSize: 2400, format: inputFormat) { [weak self] buffer, _ in
-            self?.recorder.append(buffer)
             self?.sendMic(buffer)
         }
         player.volume = Float(volume)

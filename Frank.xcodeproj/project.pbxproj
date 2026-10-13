@@ -29,11 +29,9 @@
 		6552DF3E3F26838039ABB419 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811030869409437525AE1677 /* Fonts.swift */; };
 		6D88A651DC1A86FADB9BD891 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75CD575786ED2C95C6586B /* Palette.swift */; };
 		77CA5B1EAA8700DC57A9F9B5 /* WebResearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9B125AF78F3F44F1EE035 /* WebResearch.swift */; };
-		78A6AC9C33622081652C6C52 /* MeetingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008027C9AF044B65B3768AD /* MeetingNotes.swift */; };
 		79AA080A8D028357CA02CF89 /* CursorOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3FCB4B736EB3BBF66CE3C4 /* CursorOverlay.swift */; };
 		79D2564A7879A83015D6E207 /* ModeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845544283BDB91669FBB7FB3 /* ModeIndicator.swift */; };
 		8047425F3370C49C2808CF3F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75CD575786ED2C95C6586B /* Palette.swift */; };
-		81C47BCB875A3474D06AD5E6 /* ChunkRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE0253825485675670524F /* ChunkRecorder.swift */; };
 		88514E40422328ECAC975845 /* FrankAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53161607698695FB30B0E9D /* FrankAppView.swift */; };
 		88A9DE841F90E0BC7F22EBE0 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */; };
 		891425D0B735E16D647D5E91 /* IBMPlexSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */; };
@@ -77,13 +75,11 @@
 		16636A71B8541540E1CACF1C /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
 		190FA09E93E78F69B8126FE1 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		1DB548A20555B63F1AB64CA4 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		1FFE0253825485675670524F /* ChunkRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkRecorder.swift; sourceTree = "<group>"; };
 		2047B019CE2755A25C8CEEAE /* ReportPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPanel.swift; sourceTree = "<group>"; };
 		24932D9F2A11696B42C3E15D /* BlobShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobShape.swift; sourceTree = "<group>"; };
 		31303759D9B26EF598F41562 /* FrankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankApp.swift; sourceTree = "<group>"; };
 		3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		36AB13126CD293CB35A1F524 /* FrankLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankLink.swift; sourceTree = "<group>"; };
-		4008027C9AF044B65B3768AD /* MeetingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingNotes.swift; sourceTree = "<group>"; };
 		433CF908CA5086D32E45A39D /* MacLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacLink.swift; sourceTree = "<group>"; };
 		43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFrank.swift; sourceTree = "<group>"; };
 		4897335E1D37E2939348C631 /* ScreenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenReader.swift; sourceTree = "<group>"; };
@@ -208,7 +204,6 @@
 		59CE7536ACA9E18F51D36E0E /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
-				1FFE0253825485675670524F /* ChunkRecorder.swift */,
 				C53161607698695FB30B0E9D /* FrankAppView.swift */,
 				3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */,
 				190FA09E93E78F69B8126FE1 /* SessionStore.swift */,
@@ -226,14 +221,6 @@
 				E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */,
 			);
 			path = Character;
-			sourceTree = "<group>";
-		};
-		73F90BAC5BA4C6F05AF23EC5 /* Notes */ = {
-			isa = PBXGroup;
-			children = (
-				4008027C9AF044B65B3768AD /* MeetingNotes.swift */,
-			);
-			path = Notes;
 			sourceTree = "<group>";
 		};
 		76B63F5C03769A8737E2AC26 /* iOS */ = {
@@ -285,7 +272,6 @@
 				6ACEA77928A08063DB54DC4A /* Character */,
 				1062C833E3278958FF8C4F6E /* Computer */,
 				3CAC514FBA2C76D7A5378C4C /* Link */,
-				73F90BAC5BA4C6F05AF23EC5 /* Notes */,
 				86AD7E9E76D9C1BBFC578214 /* Voice */,
 			);
 			path = Mac;
@@ -473,7 +459,6 @@
 				6552DF3E3F26838039ABB419 /* Fonts.swift in Sources */,
 				FA597BF39AE1DFCFA225DD91 /* HotKeys.swift in Sources */,
 				DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */,
-				78A6AC9C33622081652C6C52 /* MeetingNotes.swift in Sources */,
 				E99444B47BA24AB445C52726 /* MenuIcon.swift in Sources */,
 				0005C3CB8E19083F34658C9C /* NSColor+Hex.swift in Sources */,
 				A1F95C85CA76C74EFB1B2F7F /* PhoneServer.swift in Sources */,
@@ -502,7 +487,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9B34BCDCBF2150825A3170D /* BlobShape.swift in Sources */,
-				81C47BCB875A3474D06AD5E6 /* ChunkRecorder.swift in Sources */,
 				592EC5BA2B057BE2DE8F7C21 /* FaceView.swift in Sources */,
 				A4EA55C5DCE733FDF4876C29 /* FrankApp.swift in Sources */,
 				88514E40422328ECAC975845 /* FrankAppView.swift in Sources */,
