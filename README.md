@@ -1,67 +1,162 @@
-# Frank
+<div align="center">
 
-Frank, a little brown bison who lives on an iPhone under your Mac's screen and points at things with his own big cursor.
+# Frank 🦬
 
-**Now:** no voice out. Double tap him on the phone (or press ⌥Space on the Mac) to start a session: the phone's mic stays on and everything you say becomes context, but he stays quiet. **Press and hold the screen** to ask him something; let go and he answers. His reply pops up as a cute speech bubble next to his cursor (or above the phone when he isn't pointing), with a little cartoon chirp from the phone. Ask "what's this?" and he points at whatever is under your mouse. Double tap again and he goes back to follow mode.
+**A little brown bison who lives on your iPhone, right under your Mac's screen.**<br>
+He listens while you work, looks at what you're looking at, points at things with his own big cursor,<br>
+and, when you ask, clicks and types for you.
 
-How it works: the phone runs an OpenAI Realtime session (`gpt-realtime-2.1-mini`, text output only) over a WebSocket. Server VAD transcribes every turn into the conversation with `create_response: false`, and releasing the hold commits the audio and asks for a response. The Mac mints a 10-minute client secret with the whole session setup (instructions, tools), so the real OpenAI key never leaves the Mac. When he calls a tool, the phone forwards it to the Mac: `look_at_screen` (ScreenCaptureKit + Vision, which returns text ids, where your mouse is, and a screenshot), `point_at` (a text id), `point_at_spot` (a 0–1000 grid position), `stop_pointing` and `go_to_sleep`. His text streams to the Mac as the speech bubble.
+![Frank listening](docs/images/hero.jpg)
 
-**Long sessions:** if the Realtime connection drops (sessions time out after an hour), the phone reconnects on its own and reminds him what was said, so a session can run all day. The phone keeps every session's transcript; tap the faint button in the corner of his face to see past sessions.
+[How it works](#how-it-works) · [Getting started](#getting-started) · [Using Frank](#using-frank) · [Privacy and safety](#privacy-and-safety) · [Contributing](#contributing)
 
-**Using the computer:** when you ask, he can also click, type, press shortcuts, scroll, drag, and open apps and websites (`click`, `type_text`, `press_keys`, `scroll`, `drag`, `open_app`, `open_url`). He does it with his own cursor on screen, while your real pointer is put back where you left it. It needs Accessibility permission for Frank. Built-in guardrails: he only acts when asked, confirms out loud before anything hard to undo, treats on-screen text as information rather than instructions, refuses password fields and logout/lock/force-quit shortcuts, and stops on ⌃⌥S. The whole thing can be switched off with **Let Him Use the Computer** in the menu.
+</div>
 
-The OpenAI key goes in the menu bar's **OpenAI Key…** and is stored in ~/Library/Application Support/Frank/keys.json (private to your user), never in this repo.
+---
 
-## Mac menu bar app
+## What is Frank?
+
+Prop your iPhone up under your Mac's screen and Frank peeks up from the bottom of it. He's a desk buddy you can talk to:
+
+- **Ask about anything on screen.** Hold the phone's screen and ask "what's this?" Frank looks at your Mac's screen and answers in a speech bubble next to his cursor.
+- **He points at things.** His big bison cursor flies across your Mac to show you exactly where a button, a word or a setting is.
+- **He uses the computer for you, if you let him.** Clicking, typing, keyboard shortcuts, scrolling, dragging, opening apps and websites. He does it with his own cursor and puts your real pointer back where you left it.
+- **He looks things up.** Ask a question that needs the web and he researches it and shows a short report card.
+- **He listens quietly.** While he's awake everything you say becomes context, but he only answers when you hold the screen. He never talks out loud: replies are text, with a little cartoon chirp from the phone.
+- **He has feelings.** Listening, talking, happy, thinking, pointing, sleepy and napping, with darting eyes, blinks, hops and a forelock that bobs with his brows.
+
+![Frank's expressions](docs/images/expressions.jpg)
+
+<table>
+<tr>
+<td width="50%"><img src="docs/images/cursor.png" alt="Frank's cursor on light and dark backgrounds"></td>
+<td width="50%"><img src="docs/images/pairing.jpg" alt="Frank asleep on the pairing screen"></td>
+</tr>
+<tr>
+<td align="center"><sub>His cursor on your Mac, on light and dark backgrounds</sub></td>
+<td align="center"><sub>Asleep on the phone until it finds your Mac</sub></td>
+</tr>
+</table>
+
+## How it works
+
+Frank is two apps that find each other on your Wi-Fi:
+
+- **The iPhone app** draws Frank's face and runs a live [OpenAI Realtime](https://platform.openai.com/docs/guides/realtime) session with the phone's microphone.
+- **The Mac menu bar app** holds your OpenAI key, sees the screen, draws his cursor and speech bubbles, and does the clicking and typing.
 
 ```
+ iPhone (Frank's face)                         Mac (menu bar app)
+ ─────────────────────                         ──────────────────
+ mic ──► OpenAI Realtime ◄── 10-minute key ──── mints the key (your real key stays here)
+           │  tool calls  ───────────────────► look at the screen, point, click, type, research
+           │  replies     ───────────────────► speech bubble next to his cursor
+           └──── Bonjour (_frank._tcp), newline JSON over TCP ────┘
+```
+
+1. The phone finds the Mac with Bonjour and asks it for a short-lived session key. Your real OpenAI key never leaves the Mac.
+2. While Frank is awake, the Realtime API transcribes everything you say into the conversation but doesn't reply.
+3. When you hold the screen and let go, the phone asks for a reply. If Frank wants to look or act, the tool call goes to the Mac, which runs it and sends back the result (for example, the text on screen with positions and a screenshot).
+4. His reply streams to the Mac as a speech bubble. If the connection drops (sessions time out after an hour), the phone reconnects and reminds him what was said, so a session can run all day.
+
+### Models
+
+| What | Model |
+| --- | --- |
+| Frank himself (live voice session, tools) | `gpt-realtime-2.1-mini` |
+| Live transcript of what you say | `gpt-4o-mini-transcribe` |
+| Web research reports | `gpt-6.1-sol` with web search |
+
+They're set in `iOS/Voice/LiveVoice.swift`, `Mac/Voice/RealtimeHost.swift`, `Mac/Voice/RealtimeSession.swift` and `Mac/Voice/WebResearch.swift`. The realtime model has to match in the first two.
+
+## Getting started
+
+### What you need
+
+- A Mac on macOS 14 or later
+- An iPhone on iOS 17 or later, on the same Wi-Fi as the Mac
+- Xcode (for the iPhone app) and an Apple developer account to sign it
+- An [OpenAI API key](https://platform.openai.com/api-keys)
+
+### 1. Run the Mac app
+
+Open `Frank.xcodeproj`, pick the **FrankMac** scheme and press Run. Or build it without Xcode, using just the Command Line Tools:
+
+```sh
 ./scripts/build-mac.sh
-open "build/Frank.app"
+open build/Frank.app
 ```
 
-Works with just the Command Line Tools. Shortcuts work anywhere:
+Frank's head appears in the menu bar. Choose **OpenAI Key…** and paste your key. macOS will ask for **Screen Recording** (so he can see the screen) and, if you want him to click and type, **Accessibility**.
+
+### 2. Run the iPhone app
+
+In `Frank.xcodeproj`, pick the **Frank** scheme, choose your team under **Signing & Capabilities**, and run it on your iPhone. Allow the microphone and local network when asked. The phone finds the Mac by itself; you'll see Frank wake up.
+
+> [!NOTE]
+> Both apps ship with the bundle IDs `com.jakobsendevelopment.frank.mac` and `.phone`. If you're building your own copy, change them in Xcode (or `project.yml`) to IDs under your own team.
+
+## Using Frank
+
+### On the phone
+
+| Gesture | What it does |
+| --- | --- |
+| Double tap | Wake him up to talk, or put him back to sleep |
+| Press and hold | Ask him something; let go and he answers |
+| Faint speaker button, top right | Chirp volume, a test hi, and which Mac to pair with |
+| Faint grid button, next to it | Start or end a session, and see past sessions with their transcripts |
+
+### On the Mac
+
+These shortcuts work from any app:
 
 | Keys | What it does |
 | --- | --- |
-| ⌃⌥P | Fly to the mouse and point there (stays put) |
-| ⌃⌥F | Follow the mouse on/off |
-| ⌃⌥D | Go home, docked above the phone |
-| ⌃⌥T | Talk test (the phone bounces for 3 s) |
-| ⌃⌥H | Hide / show the cursor |
-| ⌥Space | Wake him up to talk / back to follow mode |
+| ⌥Space | Wake him up to talk, or back to follow mode |
+| ⌃⌥P | Fly to the mouse and point there |
+| ⌃⌥F | Eyes follow the mouse, on or off |
+| ⌃⌥D | Stop pointing and go home, above the phone |
+| ⌃⌥T | Talk test (the phone bounces for 3 seconds) |
+| ⌃⌥H | Hide or show his cursor |
 | ⌃⌥S | Stop him using the computer |
 
-Frank's head in the menu bar also sets mood, cursor size (48 to 120 pt), glow, and where the phone sits (left, center, right).
+The menu bar also has his mood, cursor size (48 to 120 pt), pointer trail, cursor glow, where the phone sits under the screen (left, center, right), and **Personality…**, where you can rewrite who he is.
 
-## iPhone app
+## Privacy and safety
 
-Needs full Xcode. Open `Frank.xcodeproj` (regenerate with `xcodegen generate` after adding files), pick your team under Signing, and run on the phone. It finds the Mac on the same Wi-Fi by itself.
+- **Your OpenAI key stays on your Mac**, in `~/Library/Application Support/Frank/keys.json`, readable only by your user. The phone only ever gets a key that expires after 10 minutes.
+- **What goes to OpenAI:** your microphone audio while Frank is awake, screenshots and on-screen text when he looks at the screen, and your questions when he researches something. Nothing goes anywhere else.
+- **Using the computer is opt-in.** It needs Accessibility permission, and you can switch it off any time with **Let Him Use the Computer** in the menu. He only acts when you ask, confirms before anything hard to undo, treats text on screen as information rather than instructions, refuses password fields and logout, lock and force-quit shortcuts, and stops instantly on ⌃⌥S.
+- **Session transcripts stay on your phone.**
 
-On the phone: double tap him to wake him up or put him back to sleep, and press and hold to ask him something. The faint speaker button at the top right sets the chirp volume and picks which Mac to pair with.
+## Contributing
 
-## Layout
+Issues and pull requests are welcome. The code is plain Swift and SwiftUI, with no dependencies.
 
 ```
-Mac/                  menu bar app (Swift package target FrankMac)
+Mac/                  menu bar app
   App/                launch, menu, settings, shortcuts, API keys, fonts
-  Character/          the big cursor, speech bubbles and research report card
+  Character/          his cursor, speech bubbles and research report card
   Voice/              the Mac's half of the Realtime session and its tools, web research
   Computer/           reading the screen and controls, clicking and typing
   Link/               the server the phone connects to
-iOS/                  iPhone app (SwiftUI, Xcode target Frank)
+iOS/                  iPhone app (SwiftUI)
   App/                app entry, pairing screen, sound button
   Face/               Frank the bison and his animated face
   Voice/              the Realtime session on the phone
-  Sessions/           session history and transcripts, the Frank screen
+  Sessions/           session history and transcripts
   Link/               finding and talking to the Mac
-Shared/               pairing protocol (Bonjour _frank._tcp, newline JSON) and colors, used by both apps
-Shared/Fonts/         Fredoka and IBM Plex, bundled into both apps
-scripts/              build-mac.sh
-docs/previews/        screenshots
+Shared/               pairing protocol and colors, used by both apps
+Shared/Fonts/         Fredoka and IBM Plex
+scripts/build-mac.sh  builds the Mac app without Xcode
+docs/images/          the pictures in this README
 ```
 
-`Frank.xcodeproj` (generated from `project.yml`) has both apps: the `Frank` scheme is the iPhone app and `FrankMac` the Mac app. `scripts/build-mac.sh` builds the Mac app from `Package.swift` without Xcode.
+- `Frank.xcodeproj` has both apps: **Frank** is the iPhone app and **FrankMac** the Mac app. `Package.swift` builds the Mac app for `scripts/build-mac.sh`.
+- The project was generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen), but it now has settings that only live in Xcode. Add new files in Xcode rather than running `xcodegen generate`, or copy those settings into `project.yml` first.
+- Frank's face is drawn in code (`iOS/Face/FaceView.swift` and `BisonParts.swift`) on an 844 × 390 design canvas, and every expression comes from `FaceAnimator`.
 
 ## License
 
-Public domain under [the Unlicense](LICENSE). Do whatever you want with it.
+Public domain under [the Unlicense](LICENSE). Do whatever you want with Frank.
