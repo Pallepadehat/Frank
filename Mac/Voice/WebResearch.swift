@@ -15,7 +15,7 @@ struct ResearchReport {
 
 /// Looks things up on the web with OpenAI's Responses API and its web search tool.
 enum WebResearch {
-    static let model = "gpt-5.5"
+    static let model = "gpt-6.1-sol"
 
     enum ResearchError: LocalizedError {
         case noKey, failed(String)

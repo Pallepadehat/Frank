@@ -10,7 +10,7 @@ final class LiveVoice: NSObject, ObservableObject {
 
     @Published private(set) var state: State = .asleep
 
-    static let model = "gpt-realtime-2.1"
+    static let model = "gpt-realtime-2.1-mini"
 
     /// Asks the Mac for a short-lived key. Calls back with nil on failure.
     var requestToken: ((@escaping (String?) -> Void) -> Void)?
