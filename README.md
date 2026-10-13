@@ -55,14 +55,33 @@ Frank is two apps that find each other on your Wi-Fi:
 - **The iPhone app** is his face and ears. It draws Frank and turns what you say into text on the device.
 - **The Mac menu bar app** is his brain and hands. It holds your OpenAI key, talks to the model, sees the screen, draws his cursor and speech bubbles, and does the clicking and typing.
 
+```mermaid
+flowchart LR
+    subgraph phone["📱 iPhone · face and ears"]
+        direction TB
+        mic["🎙️ Microphone"] --> whisper["Whisper<br/>on device"]
+        whisper -.-> qwen["Qwen cleanup<br/>optional, on device"]
+        face["🦬 Frank's face<br/>chirps and transcript"]
+    end
+
+    subgraph mac["💻 Mac · brain and hands"]
+        direction TB
+        brain["🧠 Brain<br/>look → act → check"]
+        tools["🛠️ Tools<br/>look · point · research<br/>press · click · type"]
+        bubble["💬 Speech bubble<br/>by his cursor"]
+        brain <--> tools
+        brain --> bubble
+    end
+
+    openai[("OpenAI<br/>gpt-6-luna")]
+
+    whisper -- "what you said, as text" --> brain
+    qwen -.-> brain
+    brain <--> openai
+    brain -- "replies" --> face
 ```
- iPhone (face and ears)                      Mac (brain and hands)
- ──────────────────────                      ─────────────────────
- mic ─► Whisper (on device) ─► text ───────► gpt-6-luna (Responses API) ◄─► tools: look, point,
-                                                                              research, press, click, type
- chirp + transcript ◄──── replies ──────────  speech bubble by his cursor
-        └──── Bonjour (_frank._tcp), newline JSON over TCP ────┘
-```
+
+The two apps find each other with Bonjour (`_frank._tcp`) and talk in newline-separated JSON over TCP. Only text crosses between them; audio never leaves the phone.
 
 1. While Frank is awake, the phone splits what you say into phrases, transcribes them with Whisper on the device (optionally cleaned up by a small local language model) and sends the text to the Mac as background. Frank doesn't reply yet.
 2. When you hold the screen, everything you say until you let go is your question. The phone transcribes it straight away and sends it to the Mac.
