@@ -22,7 +22,7 @@ Prop your iPhone up under your Mac's screen and Frank peeks up from the bottom o
 - **He points at things.** His big bison cursor flies across your Mac to show you exactly where a button, a word or a setting is.
 - **He uses the computer for you, if you let him.** Clicking, typing, keyboard shortcuts, scrolling, dragging, opening apps and websites. He does it with his own cursor and puts your real pointer back where you left it.
 - **He looks things up.** Ask a question that needs the web and he researches it and shows a short report card.
-- **He listens quietly.** While he's awake everything you say becomes context, but he only answers when you hold the screen. He never talks out loud: replies are text, with a little cartoon chirp from the phone.
+- **He listens quietly, on the device.** While he's awake the iPhone turns everything you say into text with on-device Whisper (Danish and English), and that becomes context. Audio never leaves the phone. He only answers when you hold the screen, and never talks out loud: replies are text, with a little cartoon chirp from the phone.
 - **He has feelings.** Listening, talking, happy, thinking, pointing, sleepy and napping, with darting eyes, blinks, hops and a forelock that bobs with his brows.
 
 ![Frank's expressions](docs/images/expressions.jpg)
@@ -42,32 +42,33 @@ Prop your iPhone up under your Mac's screen and Frank peeks up from the bottom o
 
 Frank is two apps that find each other on your Wi-Fi:
 
-- **The iPhone app** draws Frank's face and runs a live [OpenAI Realtime](https://platform.openai.com/docs/guides/realtime) session with the phone's microphone.
+- **The iPhone app** draws Frank's face, transcribes speech on the device, and runs a text-only [OpenAI Realtime](https://platform.openai.com/docs/guides/realtime) session.
 - **The Mac menu bar app** holds your OpenAI key, sees the screen, draws his cursor and speech bubbles, and does the clicking and typing.
 
 ```
  iPhone (Frank's face)                         Mac (menu bar app)
  ─────────────────────                         ──────────────────
- mic ──► OpenAI Realtime ◄── 10-minute key ──── mints the key (your real key stays here)
+ mic ─► Whisper (on device) ─► text ─► OpenAI Realtime ◄── 10-minute key ── mints the key (your real key stays here)
            │  tool calls  ───────────────────► look at the screen, point, click, type, research
            │  replies     ───────────────────► speech bubble next to his cursor
            └──── Bonjour (_frank._tcp), newline JSON over TCP ────┘
 ```
 
 1. The phone finds the Mac with Bonjour and asks it for a short-lived session key. Your real OpenAI key never leaves the Mac.
-2. While Frank is awake, the Realtime API transcribes everything you say into the conversation but doesn't reply.
-3. When you hold the screen and let go, the phone asks for a reply. If Frank wants to look or act, the tool call goes to the Mac, which runs it and sends back the result (for example, the text on screen with positions and a screenshot).
+2. While Frank is awake, the phone splits what you say into phrases, transcribes them with Whisper on the device (optionally cleaned up by a small local language model) and adds the text to the conversation. Frank doesn't reply yet.
+3. When you hold the screen, everything you say until you let go is your question. The phone transcribes it straight away and asks for a reply. If Frank wants to look or act, the tool call goes to the Mac, which runs it and sends back the result (for example, the text on screen with positions and a screenshot).
 4. His reply streams to the Mac as a speech bubble. If the connection drops (sessions time out after an hour), the phone reconnects and reminds him what was said, so a session can run all day.
 
 ### Models
 
-| What | Model |
-| --- | --- |
-| Frank himself (live voice session, tools) | `gpt-realtime-2.1-mini` |
-| Live transcript of what you say | `gpt-4o-mini-transcribe` |
-| Web research reports | `gpt-6.1-sol` with web search |
+| What | Model | Where it runs |
+| --- | --- | --- |
+| Speech to text | Whisper Small or Whisper Large v3 Turbo ([WhisperKit](https://github.com/argmaxinc/argmax-oss-swift)) | On the iPhone |
+| Transcript cleanup (optional) | Qwen2.5 1.5B Instruct, 4-bit ([MLX](https://github.com/ml-explore/mlx-swift-lm)) | On the iPhone |
+| Frank himself (text in, text out, tools) | `gpt-realtime-2.1-mini` | OpenAI |
+| Web research reports | `gpt-6.1-sol` with web search | OpenAI |
 
-They're set in `iOS/Voice/LiveVoice.swift`, `Mac/Voice/RealtimeHost.swift`, `Mac/Voice/RealtimeSession.swift` and `Mac/Voice/WebResearch.swift`. The realtime model has to match in the first two.
+The on-device models are downloaded inside the app (**Frank → Ears**), not bundled. The OpenAI models are set in `iOS/Voice/LiveVoice.swift`, `Mac/Voice/RealtimeHost.swift` and `Mac/Voice/WebResearch.swift`; the realtime model has to match in the first two.
 
 ## Getting started
 
@@ -91,7 +92,9 @@ Frank's head appears in the menu bar. Choose **OpenAI Key…** and paste your ke
 
 ### 2. Run the iPhone app
 
-In `Frank.xcodeproj`, pick the **Frank** scheme, choose your team under **Signing & Capabilities**, and run it on your iPhone. Allow the microphone and local network when asked. The phone finds the Mac by itself; you'll see Frank wake up.
+In `Frank.xcodeproj`, pick the **Frank** scheme, choose your team under **Signing & Capabilities**, and run it on your iPhone. Allow the microphone and local network when asked. The phone finds the Mac by itself.
+
+The first time you wake him, Frank asks to download his ears: Whisper Small (490 MB). In **Frank → Ears** you can switch to Whisper Large v3 Turbo for better Danish, pick your language, and download the optional cleanup model (880 MB). The cleanup model needs a real iPhone with 6 GB of memory or more; it can't run in the Simulator.
 
 > [!NOTE]
 > Both apps ship with the bundle IDs `com.jakobsendevelopment.frank.mac` and `.phone`. If you're building your own copy, change them in Xcode (or `project.yml`) to IDs under your own team.
@@ -126,13 +129,13 @@ The menu bar also has his mood, cursor size (48 to 120 pt), pointer trail, curso
 ## Privacy and safety
 
 - **Your OpenAI key stays on your Mac**, in `~/Library/Application Support/Frank/keys.json`, readable only by your user. The phone only ever gets a key that expires after 10 minutes.
-- **What goes to OpenAI:** your microphone audio while Frank is awake, screenshots and on-screen text when he looks at the screen, and your questions when he researches something. Nothing goes anywhere else.
+- **Audio never leaves your iPhone.** Speech is transcribed on the device. What goes to OpenAI is the resulting text, screenshots and on-screen text when he looks at the screen, and your questions when he researches something. Model downloads come from Hugging Face. Nothing goes anywhere else.
 - **Using the computer is opt-in.** It needs Accessibility permission, and you can switch it off any time with **Let Him Use the Computer** in the menu. He only acts when you ask, confirms before anything hard to undo, treats text on screen as information rather than instructions, refuses password fields and logout, lock and force-quit shortcuts, and stops instantly on ⌃⌥S.
 - **Session transcripts stay on your phone.**
 
 ## Contributing
 
-Issues and pull requests are welcome. The code is plain Swift and SwiftUI, with no dependencies.
+Issues and pull requests are welcome. The code is plain Swift and SwiftUI. The Mac app has no dependencies; the iPhone app uses WhisperKit, MLX Swift LM, swift-huggingface and swift-transformers via Swift Package Manager.
 
 ```
 Mac/                  menu bar app
@@ -144,6 +147,7 @@ Mac/                  menu bar app
 iOS/                  iPhone app (SwiftUI)
   App/                app entry, pairing screen, sound button
   Face/               Frank the bison and his animated face
+  Ears/               on-device speech recognition, transcript cleanup and model downloads
   Voice/              the Realtime session on the phone
   Sessions/           session history and transcripts
   Link/               finding and talking to the Mac
@@ -154,7 +158,7 @@ docs/images/          the pictures in this README
 ```
 
 - `Frank.xcodeproj` has both apps: **Frank** is the iPhone app and **FrankMac** the Mac app. `Package.swift` builds the Mac app for `scripts/build-mac.sh`.
-- The project was generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen), but it now has settings that only live in Xcode. Add new files in Xcode rather than running `xcodegen generate`, or copy those settings into `project.yml` first.
+- `Frank.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). After adding files or changing settings, edit `project.yml` and run `xcodegen generate`.
 - Frank's face is drawn in code (`iOS/Face/FaceView.swift` and `BisonParts.swift`) on an 844 × 390 design canvas, and every expression comes from `FaceAnimator`.
 
 ## License
