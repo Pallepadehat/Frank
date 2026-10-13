@@ -1,0 +1,813 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0005C3CB8E19083F34658C9C /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61391B44FD29CBA45845D495 /* NSColor+Hex.swift */; };
+		030631CFB83DA40592C36103 /* CursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF339D0BFCC329232E55BF8 /* CursorView.swift */; };
+		0C3AA64FDDB2723F986D12BC /* libFrankShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */; };
+		0E4002F875CF5723A499DA6E /* OFL-Fredoka.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */; };
+		119D939874408031A2EFEACA /* OFL-IBMPlex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */; };
+		15DF7B9893F4CFE629397E6D /* LiveVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489786BA502945B076F24816 /* LiveVoice.swift */; };
+		307CAEC5719ADB91E4E9A2AB /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */; };
+		334B8DEF999C52258AD39240 /* ScreenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897335E1D37E2939348C631 /* ScreenReader.swift */; };
+		36944375708AEA04B6120C2D /* IBMPlexSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */; };
+		3B6C996E4107ED170C079F98 /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */; };
+		402729C2BC6177B3FA369991 /* CursorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF730EDEDA1E5ACFB0C833DF /* CursorEngine.swift */; };
+		43DDA0CDB40FB2BB71088637 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAEDB88A3054EABCD853B73 /* PairingView.swift */; };
+		46FF2F8E132103F5146D4287 /* FrankLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB13126CD293CB35A1F524 /* FrankLink.swift */; };
+		4CF7EE0F209867C014E96212 /* ComputerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B507E8C73A00D9DF3509F /* ComputerControl.swift */; };
+		52E35414AF9D4EFBBB89E63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295B4E2DF49F5F2C1FD9CDA /* AppDelegate.swift */; };
+		55840ACA8B6FDF8066C50939 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E77D41497CC5848279992 /* main.swift */; };
+		5644D252C674F8B1CFB75579 /* TeardropLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */; };
+		5713ECD88009EC859158004F /* OFL-Fredoka.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */; };
+		592EC5BA2B057BE2DE8F7C21 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16636A71B8541540E1CACF1C /* FaceView.swift */; };
+		6552DF3E3F26838039ABB419 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811030869409437525AE1677 /* Fonts.swift */; };
+		6D88A651DC1A86FADB9BD891 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75CD575786ED2C95C6586B /* Palette.swift */; };
+		77CA5B1EAA8700DC57A9F9B5 /* WebResearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9B125AF78F3F44F1EE035 /* WebResearch.swift */; };
+		78A6AC9C33622081652C6C52 /* MeetingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008027C9AF044B65B3768AD /* MeetingNotes.swift */; };
+		79AA080A8D028357CA02CF89 /* CursorOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3FCB4B736EB3BBF66CE3C4 /* CursorOverlay.swift */; };
+		79D2564A7879A83015D6E207 /* ModeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845544283BDB91669FBB7FB3 /* ModeIndicator.swift */; };
+		8047425F3370C49C2808CF3F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75CD575786ED2C95C6586B /* Palette.swift */; };
+		81C47BCB875A3474D06AD5E6 /* ChunkRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE0253825485675670524F /* ChunkRecorder.swift */; };
+		88514E40422328ECAC975845 /* FrankAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53161607698695FB30B0E9D /* FrankAppView.swift */; };
+		88A9DE841F90E0BC7F22EBE0 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */; };
+		891425D0B735E16D647D5E91 /* IBMPlexSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */; };
+		8B258B5C553B82CF3C13EF2C /* OFL-IBMPlex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */; };
+		91698283EF8C0004A1366EAB /* RealtimeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDC0681E0C0EBDE9F9D20E6 /* RealtimeSession.swift */; };
+		93A106AD45866AD7562F32A2 /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78783D42BC7F17874BEC12BE /* SoundButton.swift */; };
+		93C84FBFEA1CED191E9BDE10 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6C5D075D6291431B576F04 /* Settings.swift */; };
+		9A3BF0DA3462A56FF49B7F04 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */; };
+		A1F95C85CA76C74EFB1B2F7F /* PhoneServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3DA33366B38D1807EA84DF /* PhoneServer.swift */; };
+		A24606D3606811BA1D2CD91F /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */; };
+		A4EA55C5DCE733FDF4876C29 /* FrankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31303759D9B26EF598F41562 /* FrankApp.swift */; };
+		A59322BD32613CD9C0C219F6 /* Fredoka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A97C4E65F58D68436213125A /* Fredoka.ttf */; };
+		AD24B7216DD57ED8B4AC8F24 /* ReportPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047B019CE2755A25C8CEEAE /* ReportPanel.swift */; };
+		B5C3E7E4BF26E9AA12B2F4BB /* ControlsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C76B5A8C4BA54272833F058 /* ControlsReader.swift */; };
+		C27F46D0A03509BE122F5204 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FA09E93E78F69B8126FE1 /* SessionStore.swift */; };
+		DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB548A20555B63F1AB64CA4 /* Keychain.swift */; };
+		E3CACF8C0401042872220CAC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA70AC6735104A10AF1676 /* Theme.swift */; };
+		E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */; };
+		E99444B47BA24AB445C52726 /* MenuIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */; };
+		EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433CF908CA5086D32E45A39D /* MacLink.swift */; };
+		EB717D1F356EE56E7D44389C /* FrankLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB13126CD293CB35A1F524 /* FrankLink.swift */; };
+		F3B7C3CA6566BEE060CEB402 /* RealtimeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD07A38AB0908FBDBA3DDF4 /* RealtimeHost.swift */; };
+		F84EEDA8C4C14839C8CA2A75 /* Fredoka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A97C4E65F58D68436213125A /* Fredoka.ttf */; };
+		F9B34BCDCBF2150825A3170D /* BlobShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24932D9F2A11696B42C3E15D /* BlobShape.swift */; };
+		FA597BF39AE1DFCFA225DD91 /* HotKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6928043D1723505078B5FC /* HotKeys.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		484A2BAD88D48CE02D77F0A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7191C25DEDDF59720F1E3809 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54FEEA93B8E5A15FE387089E;
+			remoteInfo = FrankShared;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		044E77D41497CC5848279992 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0C3DA33366B38D1807EA84DF /* PhoneServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneServer.swift; sourceTree = "<group>"; };
+		16636A71B8541540E1CACF1C /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		190FA09E93E78F69B8126FE1 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		1DB548A20555B63F1AB64CA4 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		1FFE0253825485675670524F /* ChunkRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkRecorder.swift; sourceTree = "<group>"; };
+		2047B019CE2755A25C8CEEAE /* ReportPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPanel.swift; sourceTree = "<group>"; };
+		24932D9F2A11696B42C3E15D /* BlobShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobShape.swift; sourceTree = "<group>"; };
+		31303759D9B26EF598F41562 /* FrankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankApp.swift; sourceTree = "<group>"; };
+		3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		36AB13126CD293CB35A1F524 /* FrankLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankLink.swift; sourceTree = "<group>"; };
+		4008027C9AF044B65B3768AD /* MeetingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingNotes.swift; sourceTree = "<group>"; };
+		433CF908CA5086D32E45A39D /* MacLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacLink.swift; sourceTree = "<group>"; };
+		43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFrank.swift; sourceTree = "<group>"; };
+		4897335E1D37E2939348C631 /* ScreenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenReader.swift; sourceTree = "<group>"; };
+		489786BA502945B076F24816 /* LiveVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVoice.swift; sourceTree = "<group>"; };
+		48DB076EF6F5361D5FB29CB9 /* Frank.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Frank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Medium.ttf"; sourceTree = "<group>"; };
+		4A6C5D075D6291431B576F04 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IBMPlexSans.ttf; sourceTree = "<group>"; };
+		61391B44FD29CBA45845D495 /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
+		62CA70AC6735104A10AF1676 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6C3FCB4B736EB3BBF66CE3C4 /* CursorOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorOverlay.swift; sourceTree = "<group>"; };
+		6C76B5A8C4BA54272833F058 /* ControlsReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsReader.swift; sourceTree = "<group>"; };
+		75E9B125AF78F3F44F1EE035 /* WebResearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebResearch.swift; sourceTree = "<group>"; };
+		78783D42BC7F17874BEC12BE /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
+		78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "OFL-Fredoka.txt"; sourceTree = "<group>"; };
+		7AF339D0BFCC329232E55BF8 /* CursorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorView.swift; sourceTree = "<group>"; };
+		811030869409437525AE1677 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		845544283BDB91669FBB7FB3 /* ModeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeIndicator.swift; sourceTree = "<group>"; };
+		8FAEDB88A3054EABCD853B73 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
+		9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "OFL-IBMPlex.txt"; sourceTree = "<group>"; };
+		9C75CD575786ED2C95C6586B /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		A97C4E65F58D68436213125A /* Fredoka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fredoka.ttf; sourceTree = "<group>"; };
+		BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIcon.swift; sourceTree = "<group>"; };
+		BE6928043D1723505078B5FC /* HotKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeys.swift; sourceTree = "<group>"; };
+		C53161607698695FB30B0E9D /* FrankAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankAppView.swift; sourceTree = "<group>"; };
+		DA419F2E01944AE3CA963739 /* FrankMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrankMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrankShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeardropLayer.swift; sourceTree = "<group>"; };
+		E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Regular.ttf"; sourceTree = "<group>"; };
+		EAD07A38AB0908FBDBA3DDF4 /* RealtimeHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeHost.swift; sourceTree = "<group>"; };
+		EDDC0681E0C0EBDE9F9D20E6 /* RealtimeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeSession.swift; sourceTree = "<group>"; };
+		F295B4E2DF49F5F2C1FD9CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F46B507E8C73A00D9DF3509F /* ComputerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerControl.swift; sourceTree = "<group>"; };
+		FF730EDEDA1E5ACFB0C833DF /* CursorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorEngine.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C80C5D41CE10E3F8DD756C8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C3AA64FDDB2723F986D12BC /* libFrankShared.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1062C833E3278958FF8C4F6E /* Computer */ = {
+			isa = PBXGroup;
+			children = (
+				F46B507E8C73A00D9DF3509F /* ComputerControl.swift */,
+				6C76B5A8C4BA54272833F058 /* ControlsReader.swift */,
+				4897335E1D37E2939348C631 /* ScreenReader.swift */,
+			);
+			path = Computer;
+			sourceTree = "<group>";
+		};
+		2040BCCA5F7A65AF6FC32E58 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F295B4E2DF49F5F2C1FD9CDA /* AppDelegate.swift */,
+				811030869409437525AE1677 /* Fonts.swift */,
+				BE6928043D1723505078B5FC /* HotKeys.swift */,
+				1DB548A20555B63F1AB64CA4 /* Keychain.swift */,
+				044E77D41497CC5848279992 /* main.swift */,
+				BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */,
+				61391B44FD29CBA45845D495 /* NSColor+Hex.swift */,
+				4A6C5D075D6291431B576F04 /* Settings.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2DFF0E19ECD8B376C24A1D45 = {
+			isa = PBXGroup;
+			children = (
+				76B63F5C03769A8737E2AC26 /* iOS */,
+				A4E6984A6EE3E1F025146046 /* Mac */,
+				81FFF21DC2BB4E1994DFFB84 /* Shared */,
+				4C569306A81CDA5D88BC99A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		305D1D6E82947A9E905A897A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				31303759D9B26EF598F41562 /* FrankApp.swift */,
+				845544283BDB91669FBB7FB3 /* ModeIndicator.swift */,
+				8FAEDB88A3054EABCD853B73 /* PairingView.swift */,
+				78783D42BC7F17874BEC12BE /* SoundButton.swift */,
+				62CA70AC6735104A10AF1676 /* Theme.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3235F49CE86A8F0E06E16D25 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				433CF908CA5086D32E45A39D /* MacLink.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
+		3CAC514FBA2C76D7A5378C4C /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				0C3DA33366B38D1807EA84DF /* PhoneServer.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
+		4C569306A81CDA5D88BC99A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48DB076EF6F5361D5FB29CB9 /* Frank.app */,
+				DA419F2E01944AE3CA963739 /* FrankMac.app */,
+				DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59CE7536ACA9E18F51D36E0E /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				1FFE0253825485675670524F /* ChunkRecorder.swift */,
+				C53161607698695FB30B0E9D /* FrankAppView.swift */,
+				3491E2EDAEF2DF58C0EEED81 /* SessionDetailView.swift */,
+				190FA09E93E78F69B8126FE1 /* SessionStore.swift */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
+		6ACEA77928A08063DB54DC4A /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				FF730EDEDA1E5ACFB0C833DF /* CursorEngine.swift */,
+				6C3FCB4B736EB3BBF66CE3C4 /* CursorOverlay.swift */,
+				7AF339D0BFCC329232E55BF8 /* CursorView.swift */,
+				2047B019CE2755A25C8CEEAE /* ReportPanel.swift */,
+				E3E9A0090C65BF616B1AF5F2 /* TeardropLayer.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		73F90BAC5BA4C6F05AF23EC5 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				4008027C9AF044B65B3768AD /* MeetingNotes.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		76B63F5C03769A8737E2AC26 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				305D1D6E82947A9E905A897A /* App */,
+				9D7487456585ED802DEF0909 /* Face */,
+				3235F49CE86A8F0E06E16D25 /* Link */,
+				59CE7536ACA9E18F51D36E0E /* Sessions */,
+				D00719274B6D770BD7C26754 /* Voice */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		81FFF21DC2BB4E1994DFFB84 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				36AB13126CD293CB35A1F524 /* FrankLink.swift */,
+				9C75CD575786ED2C95C6586B /* Palette.swift */,
+				F793CAE8849FA48ACFC99664 /* Fonts */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		86AD7E9E76D9C1BBFC578214 /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				EAD07A38AB0908FBDBA3DDF4 /* RealtimeHost.swift */,
+				EDDC0681E0C0EBDE9F9D20E6 /* RealtimeSession.swift */,
+				75E9B125AF78F3F44F1EE035 /* WebResearch.swift */,
+			);
+			path = Voice;
+			sourceTree = "<group>";
+		};
+		9D7487456585ED802DEF0909 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				24932D9F2A11696B42C3E15D /* BlobShape.swift */,
+				16636A71B8541540E1CACF1C /* FaceView.swift */,
+				43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		A4E6984A6EE3E1F025146046 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				2040BCCA5F7A65AF6FC32E58 /* App */,
+				6ACEA77928A08063DB54DC4A /* Character */,
+				1062C833E3278958FF8C4F6E /* Computer */,
+				3CAC514FBA2C76D7A5378C4C /* Link */,
+				73F90BAC5BA4C6F05AF23EC5 /* Notes */,
+				86AD7E9E76D9C1BBFC578214 /* Voice */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		D00719274B6D770BD7C26754 /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				489786BA502945B076F24816 /* LiveVoice.swift */,
+			);
+			path = Voice;
+			sourceTree = "<group>";
+		};
+		F793CAE8849FA48ACFC99664 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A97C4E65F58D68436213125A /* Fredoka.ttf */,
+				48F0807FED72821A38AD2AC8 /* IBMPlexMono-Medium.ttf */,
+				E7911AE4880AC77FDBC04948 /* IBMPlexMono-Regular.ttf */,
+				4C6AF658C5A064B18D1ECB2D /* IBMPlexSans.ttf */,
+				78BE3F3F2EE6C63561612FF0 /* OFL-Fredoka.txt */,
+				9B42A471503C5376133021D0 /* OFL-IBMPlex.txt */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B0F6EDC1F6566D2353D4E6F /* Frank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 837CF14E4B126171BF2965E0 /* Build configuration list for PBXNativeTarget "Frank" */;
+			buildPhases = (
+				E312B855EF9CFBE56B206946 /* Sources */,
+				E5B024BF517918AE1BB1EA03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Frank;
+			packageProductDependencies = (
+			);
+			productName = Frank;
+			productReference = 48DB076EF6F5361D5FB29CB9 /* Frank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54FEEA93B8E5A15FE387089E /* FrankShared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4691B9199F191BB5962B29A3 /* Build configuration list for PBXNativeTarget "FrankShared" */;
+			buildPhases = (
+				9C3732CE9997009F9515C2A3 /* Sources */,
+				E08CA337BB24C39C70EC6028 /* Copy Swift Objective-C Interface Header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FrankShared;
+			packageProductDependencies = (
+			);
+			productName = FrankShared;
+			productReference = DFDDDC80CEF2406FD7507F76 /* libFrankShared.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E03C08A190630123843C3DE /* FrankMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C39A0EA89A1829E3452E03E3 /* Build configuration list for PBXNativeTarget "FrankMac" */;
+			buildPhases = (
+				77853C719941A6981016C30F /* Sources */,
+				597CB1894529E7D59B98A442 /* Resources */,
+				C80C5D41CE10E3F8DD756C8E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58DD404D4A323E51352C6F25 /* PBXTargetDependency */,
+			);
+			name = FrankMac;
+			packageProductDependencies = (
+			);
+			productName = FrankMac;
+			productReference = DA419F2E01944AE3CA963739 /* FrankMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7191C25DEDDF59720F1E3809 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4B0F6EDC1F6566D2353D4E6F = {
+						DevelopmentTeam = 537P4FPMZ4;
+						ProvisioningStyle = Automatic;
+					};
+					5E03C08A190630123843C3DE = {
+						DevelopmentTeam = 537P4FPMZ4;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 80F2AD0CC71D231CD7A32775 /* Build configuration list for PBXProject "Frank" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2DFF0E19ECD8B376C24A1D45;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4C569306A81CDA5D88BC99A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B0F6EDC1F6566D2353D4E6F /* Frank */,
+				5E03C08A190630123843C3DE /* FrankMac */,
+				54FEEA93B8E5A15FE387089E /* FrankShared */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		597CB1894529E7D59B98A442 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A59322BD32613CD9C0C219F6 /* Fredoka.ttf in Resources */,
+				9A3BF0DA3462A56FF49B7F04 /* IBMPlexMono-Medium.ttf in Resources */,
+				3B6C996E4107ED170C079F98 /* IBMPlexMono-Regular.ttf in Resources */,
+				891425D0B735E16D647D5E91 /* IBMPlexSans.ttf in Resources */,
+				5713ECD88009EC859158004F /* OFL-Fredoka.txt in Resources */,
+				8B258B5C553B82CF3C13EF2C /* OFL-IBMPlex.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5B024BF517918AE1BB1EA03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F84EEDA8C4C14839C8CA2A75 /* Fredoka.ttf in Resources */,
+				88A9DE841F90E0BC7F22EBE0 /* IBMPlexMono-Medium.ttf in Resources */,
+				A24606D3606811BA1D2CD91F /* IBMPlexMono-Regular.ttf in Resources */,
+				36944375708AEA04B6120C2D /* IBMPlexSans.ttf in Resources */,
+				0E4002F875CF5723A499DA6E /* OFL-Fredoka.txt in Resources */,
+				119D939874408031A2EFEACA /* OFL-IBMPlex.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E08CA337BB24C39C70EC6028 /* Copy Swift Objective-C Interface Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(DERIVED_SOURCES_DIR)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			name = "Copy Swift Objective-C Interface Header";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/include/$(PRODUCT_MODULE_NAME)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		77853C719941A6981016C30F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52E35414AF9D4EFBBB89E63D /* AppDelegate.swift in Sources */,
+				4CF7EE0F209867C014E96212 /* ComputerControl.swift in Sources */,
+				B5C3E7E4BF26E9AA12B2F4BB /* ControlsReader.swift in Sources */,
+				402729C2BC6177B3FA369991 /* CursorEngine.swift in Sources */,
+				79AA080A8D028357CA02CF89 /* CursorOverlay.swift in Sources */,
+				030631CFB83DA40592C36103 /* CursorView.swift in Sources */,
+				6552DF3E3F26838039ABB419 /* Fonts.swift in Sources */,
+				FA597BF39AE1DFCFA225DD91 /* HotKeys.swift in Sources */,
+				DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */,
+				78A6AC9C33622081652C6C52 /* MeetingNotes.swift in Sources */,
+				E99444B47BA24AB445C52726 /* MenuIcon.swift in Sources */,
+				0005C3CB8E19083F34658C9C /* NSColor+Hex.swift in Sources */,
+				A1F95C85CA76C74EFB1B2F7F /* PhoneServer.swift in Sources */,
+				F3B7C3CA6566BEE060CEB402 /* RealtimeHost.swift in Sources */,
+				91698283EF8C0004A1366EAB /* RealtimeSession.swift in Sources */,
+				AD24B7216DD57ED8B4AC8F24 /* ReportPanel.swift in Sources */,
+				334B8DEF999C52258AD39240 /* ScreenReader.swift in Sources */,
+				93C84FBFEA1CED191E9BDE10 /* Settings.swift in Sources */,
+				5644D252C674F8B1CFB75579 /* TeardropLayer.swift in Sources */,
+				77CA5B1EAA8700DC57A9F9B5 /* WebResearch.swift in Sources */,
+				55840ACA8B6FDF8066C50939 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C3732CE9997009F9515C2A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB717D1F356EE56E7D44389C /* FrankLink.swift in Sources */,
+				6D88A651DC1A86FADB9BD891 /* Palette.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E312B855EF9CFBE56B206946 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B34BCDCBF2150825A3170D /* BlobShape.swift in Sources */,
+				81C47BCB875A3474D06AD5E6 /* ChunkRecorder.swift in Sources */,
+				592EC5BA2B057BE2DE8F7C21 /* FaceView.swift in Sources */,
+				A4EA55C5DCE733FDF4876C29 /* FrankApp.swift in Sources */,
+				88514E40422328ECAC975845 /* FrankAppView.swift in Sources */,
+				46FF2F8E132103F5146D4287 /* FrankLink.swift in Sources */,
+				15DF7B9893F4CFE629397E6D /* LiveVoice.swift in Sources */,
+				EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */,
+				E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */,
+				79D2564A7879A83015D6E207 /* ModeIndicator.swift in Sources */,
+				43DDA0CDB40FB2BB71088637 /* PairingView.swift in Sources */,
+				8047425F3370C49C2808CF3F /* Palette.swift in Sources */,
+				307CAEC5719ADB91E4E9A2AB /* SessionDetailView.swift in Sources */,
+				C27F46D0A03509BE122F5204 /* SessionStore.swift in Sources */,
+				93A106AD45866AD7562F32A2 /* SoundButton.swift in Sources */,
+				E3CACF8C0401042872220CAC /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58DD404D4A323E51352C6F25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54FEEA93B8E5A15FE387089E /* FrankShared */;
+			targetProxy = 484A2BAD88D48CE02D77F0A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01B59D1B9A3FF97950972045 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 537P4FPMZ4;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.mac;
+				PRODUCT_NAME = Frank;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0E2F411CC91D00D8DEDBED78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 537P4FPMZ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.phone;
+				PRODUCT_NAME = Frank;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4045FC5B2500C74FBC7EA000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 537P4FPMZ4;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.mac;
+				PRODUCT_NAME = Frank;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4DA0E0367FE6B1CF57DF33BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.FrankShared;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7828CFB3B9712BB054652E20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		999A6576857138CF8477C84E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.FrankShared;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BCB279556E62F413DE31458F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 537P4FPMZ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.visionairy.frank.phone;
+				PRODUCT_NAME = Frank;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C9085032184B385B940E977E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4691B9199F191BB5962B29A3 /* Build configuration list for PBXNativeTarget "FrankShared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA0E0367FE6B1CF57DF33BA /* Debug */,
+				999A6576857138CF8477C84E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		80F2AD0CC71D231CD7A32775 /* Build configuration list for PBXProject "Frank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9085032184B385B940E977E /* Debug */,
+				7828CFB3B9712BB054652E20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		837CF14E4B126171BF2965E0 /* Build configuration list for PBXNativeTarget "Frank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCB279556E62F413DE31458F /* Debug */,
+				0E2F411CC91D00D8DEDBED78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C39A0EA89A1829E3452E03E3 /* Build configuration list for PBXNativeTarget "FrankMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4045FC5B2500C74FBC7EA000 /* Debug */,
+				01B59D1B9A3FF97950972045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7191C25DEDDF59720F1E3809 /* Project object */;
+}
