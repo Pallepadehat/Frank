@@ -103,8 +103,8 @@ private struct ReportCard: View {
     var onClose: () -> Void
 
     private let ink = Color(nsColor: NSColor(hex: Palette.ink))
-    private let berry = Color(nsColor: NSColor(hex: Palette.berry2))
-    private let soft = Color(nsColor: NSColor(hex: 0x5D5873))
+    private let accent = Color(nsColor: NSColor(hex: Palette.fur2))
+    private let soft = Color(nsColor: NSColor(hex: 0x6E5E52))
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -128,7 +128,7 @@ private struct ReportCard: View {
                                     Link(destination: source.url) {
                                         Text(source.title)
                                             .font(.custom("IBM Plex Sans", size: 13))
-                                            .foregroundStyle(berry)
+                                            .foregroundStyle(accent)
                                             .lineLimit(1)
                                     }
                                 }
@@ -143,7 +143,7 @@ private struct ReportCard: View {
                         .lineLimit(3)
                     Text("Click to read more")
                         .font(.custom("IBM Plex Mono", size: 11))
-                        .foregroundStyle(berry)
+                        .foregroundStyle(accent)
                 }
             } else if let error = model.error {
                 Text(error)
@@ -163,9 +163,9 @@ private struct ReportCard: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(LinearGradient(colors: [.white, Color(nsColor: NSColor(hex: 0xEEF0FF))], startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(colors: [.white, Color(nsColor: NSColor(hex: 0xFFF3E6))], startPoint: .top, endPoint: .bottom))
         )
-        .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).strokeBorder(berry, lineWidth: 2.5))
+        .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).strokeBorder(accent, lineWidth: 2.5))
         .padding(4)
         .contentShape(Rectangle())
         .onTapGesture { if model.report != nil, !model.expanded { onToggle() } }
@@ -175,7 +175,7 @@ private struct ReportCard: View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: model.report == nil && model.error == nil ? "magnifyingglass" : "doc.text.magnifyingglass")
                 .font(.system(size: 15, weight: .bold))
-                .foregroundStyle(berry)
+                .foregroundStyle(accent)
                 .padding(.top, 3)
             Text(model.report?.title ?? (model.error == nil ? "Researching" : "Research"))
                 .font(.custom("Fredoka", size: 20).weight(.bold))
@@ -195,7 +195,7 @@ private struct ReportCard: View {
                 .font(.system(size: 12, weight: .heavy))
                 .foregroundStyle(.white)
                 .frame(width: 26, height: 26)
-                .background(Circle().fill(berry))
+                .background(Circle().fill(accent))
         }
         .buttonStyle(.plain)
     }

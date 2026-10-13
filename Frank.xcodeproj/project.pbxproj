@@ -50,6 +50,7 @@
 		DCDCAD036939F6A55AA8A806 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB548A20555B63F1AB64CA4 /* Keychain.swift */; };
 		E3CACF8C0401042872220CAC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA70AC6735104A10AF1676 /* Theme.swift */; };
 		E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */; };
+		B150A0000000000000000001 /* BisonParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150A0000000000000000002 /* BisonParts.swift */; };
 		E99444B47BA24AB445C52726 /* MenuIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2C54007A4AFAF87AB9C80E /* MenuIcon.swift */; };
 		EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433CF908CA5086D32E45A39D /* MacLink.swift */; };
 		EB717D1F356EE56E7D44389C /* FrankLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB13126CD293CB35A1F524 /* FrankLink.swift */; };
@@ -82,6 +83,7 @@
 		36AB13126CD293CB35A1F524 /* FrankLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrankLink.swift; sourceTree = "<group>"; };
 		433CF908CA5086D32E45A39D /* MacLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacLink.swift; sourceTree = "<group>"; };
 		43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFrank.swift; sourceTree = "<group>"; };
+		B150A0000000000000000002 /* BisonParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisonParts.swift; sourceTree = "<group>"; };
 		4897335E1D37E2939348C631 /* ScreenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenReader.swift; sourceTree = "<group>"; };
 		489786BA502945B076F24816 /* LiveVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVoice.swift; sourceTree = "<group>"; };
 		48DB076EF6F5361D5FB29CB9 /* Frank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 				24932D9F2A11696B42C3E15D /* BlobShape.swift */,
 				16636A71B8541540E1CACF1C /* FaceView.swift */,
 				43A8BA8CC646509AE27DB3C0 /* MiniFrank.swift */,
+				B150A0000000000000000002 /* BisonParts.swift */,
 			);
 			path = Face;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				15DF7B9893F4CFE629397E6D /* LiveVoice.swift in Sources */,
 				EABDE1B36444B43CCFF80B66 /* MacLink.swift in Sources */,
 				E7D8B17C9E69F2A16826E774 /* MiniFrank.swift in Sources */,
+				B150A0000000000000000001 /* BisonParts.swift in Sources */,
 				79D2564A7879A83015D6E207 /* ModeIndicator.swift in Sources */,
 				43DDA0CDB40FB2BB71088637 /* PairingView.swift in Sources */,
 				8047425F3370C49C2808CF3F /* Palette.swift in Sources */,
@@ -554,7 +558,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Frank;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Frank finds the Mac app on your Wi-Fi so the character can look where it points.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Talk to your blueberry. He listens while he's awake (double tap him to wake him up or put him to sleep).";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Talk to Frank. He listens while he's awake (double tap him to wake him up or put him to sleep).";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
@@ -569,7 +573,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -706,7 +710,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Frank;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Frank finds the Mac app on your Wi-Fi so the character can look where it points.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Talk to your blueberry. He listens while he's awake (double tap him to wake him up or put him to sleep).";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Talk to Frank. He listens while he's awake (double tap him to wake him up or put him to sleep).";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
@@ -721,7 +725,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

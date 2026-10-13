@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The blob outline: CSS `border-radius: 52% 48% 46% 54% / 58% 56% 44% 42%`.
+/// His head outline: CSS `border-radius: 52% 48% 46% 54% / 58% 56% 44% 42%`.
 struct BlobShape: Shape {
     func path(in rect: CGRect) -> Path {
         BlobShape.path(in: rect)
@@ -36,7 +36,7 @@ struct BlobShape: Shape {
         return p
     }
 
-    /// The blueberry gradient at 150°, like the design.
+    /// His fur gradient at 150°, lit from the top left.
     static func fill(in r: CGRect) -> GraphicsContext.Shading {
         .linearGradient(gradient,
                         startPoint: CGPoint(x: r.minX + 0.25 * r.width, y: r.minY + 0.067 * r.height),
@@ -51,19 +51,5 @@ struct BlobShape: Shape {
 
     static var linear: LinearGradient {
         LinearGradient(gradient: gradient, startPoint: UnitPoint(x: 0.25, y: 0.067), endPoint: UnitPoint(x: 0.75, y: 0.933))
-    }
-}
-
-/// The little blueberry crown on top of his head (SVG path from the design, 60×40 box).
-enum Crown {
-    static func path(in r: CGRect) -> Path {
-        let pts: [(CGFloat, CGFloat)] = [(30, 4), (36, 16), (52, 12), (40, 24), (46, 36), (30, 28), (14, 36), (20, 24), (8, 12), (24, 16)]
-        var p = Path()
-        for (i, pt) in pts.enumerated() {
-            let point = CGPoint(x: r.minX + pt.0 / 60 * r.width, y: r.minY + pt.1 / 40 * r.height)
-            if i == 0 { p.move(to: point) } else { p.addLine(to: point) }
-        }
-        p.closeSubpath()
-        return p
     }
 }

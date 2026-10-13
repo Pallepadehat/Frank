@@ -1,6 +1,6 @@
 # Frank
 
-A blueberry character who lives on an iPhone under your Mac's screen and points at things with his own big cursor.
+Frank, a little brown bison who lives on an iPhone under your Mac's screen and points at things with his own big cursor.
 
 **Now:** no voice out. Double tap him on the phone (or press ⌥Space on the Mac) to start a session: the phone's mic stays on and everything you say becomes context, but he stays quiet. **Press and hold the screen** to ask him something; let go and he answers. His reply pops up as a cute speech bubble next to his cursor (or above the phone when he isn't pointing), with a little cartoon chirp from the phone. Ask "what's this?" and he points at whatever is under your mouse. Double tap again and he goes back to follow mode.
 
@@ -31,7 +31,7 @@ Works with just the Command Line Tools. Shortcuts work anywhere:
 | ⌥Space | Wake him up to talk / back to follow mode |
 | ⌃⌥S | Stop him using the computer |
 
-The menu bar blob also sets mood, cursor size (48 to 120 pt), glow, and where the phone sits (left, center, right).
+Frank's head in the menu bar also sets mood, cursor size (48 to 120 pt), glow, and where the phone sits (left, center, right).
 
 ## iPhone app
 
@@ -50,7 +50,7 @@ Mac/                  menu bar app (Swift package target FrankMac)
   Link/               the server the phone connects to
 iOS/                  iPhone app (SwiftUI, Xcode target Frank)
   App/                app entry, pairing screen, sound button
-  Face/               the blob and his animated face
+  Face/               Frank the bison and his animated face
   Voice/              the Realtime session on the phone
   Sessions/           session history and transcripts, the Frank screen
   Link/               finding and talking to the Mac

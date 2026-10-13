@@ -80,7 +80,7 @@ private struct EntryView: View {
                 VStack(alignment: .trailing, spacing: 3) {
                     Text("You asked")
                         .font(.plexMono(10))
-                        .foregroundStyle(Color(hex: Palette.berry1))
+                        .foregroundStyle(Color(hex: Palette.fur1))
                     Text(entry.text)
                         .font(.plexSans(15).weight(.medium))
                         .foregroundStyle(.white)
@@ -105,7 +105,7 @@ private struct EntryView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Button { withAnimation(.spring(duration: 0.3)) { open.toggle() } } label: {
                     HStack(spacing: 8) {
-                        Image(systemName: "doc.text.magnifyingglass").foregroundStyle(Color(hex: Palette.berry2))
+                        Image(systemName: "doc.text.magnifyingglass").foregroundStyle(Color(hex: Palette.fur2))
                         Text(lines.first ?? "Research")
                             .font(.fredoka(16))
                             .foregroundStyle(Color(hex: Palette.ink))
@@ -115,7 +115,7 @@ private struct EntryView: View {
                             .font(.system(size: 12, weight: .heavy))
                             .foregroundStyle(.white)
                             .frame(width: 24, height: 24)
-                            .background(Circle().fill(Color(hex: Palette.berry2)))
+                            .background(Circle().fill(Color(hex: Palette.fur2)))
                     }
                 }
                 .buttonStyle(.plain)
@@ -125,8 +125,8 @@ private struct EntryView: View {
                     .lineLimit(open ? nil : 3)
             }
             .padding(14)
-            .background(Color(hex: 0xEEF0FF), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(Color(hex: Palette.berry2), lineWidth: 2))
+            .background(Color(hex: 0xFFF3E6), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(Color(hex: Palette.fur2), lineWidth: 2))
             .padding(.leading, 36)
             .padding(.trailing, 80)
         }

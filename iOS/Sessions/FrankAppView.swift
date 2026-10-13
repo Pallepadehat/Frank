@@ -24,7 +24,7 @@ struct FrankAppView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
         .preferredColorScheme(.dark)
-        .tint(Color(hex: Palette.berry1))
+        .tint(Color(hex: Palette.fur1))
         .onAppear { volume = live.volume }
     }
 
@@ -99,7 +99,7 @@ struct FrankAppView: View {
                                     Spacer()
                                     if name == link.currentMac {
                                         Image(systemName: link.connected ? "checkmark" : "ellipsis")
-                                            .foregroundStyle(Color(hex: Palette.berry2))
+                                            .foregroundStyle(Color(hex: Palette.fur2))
                                     }
                                 }
                                 .frame(minHeight: 34)
@@ -154,7 +154,7 @@ struct FrankAppView: View {
                 VStack(spacing: 10) {
                     Image(systemName: "text.bubble")
                         .font(.system(size: 34))
-                        .foregroundStyle(Color(hex: Palette.berry2))
+                        .foregroundStyle(Color(hex: Palette.fur2))
                     Text("No sessions yet")
                         .font(.fredoka(18))
                         .foregroundStyle(.white)
@@ -214,7 +214,7 @@ struct SessionRow: View {
                     .foregroundStyle(Color(hex: Palette.inkSoft))
                 Text("\(session.questionCount) asked")
                     .font(.plexMono(11))
-                    .foregroundStyle(Color(hex: Palette.berry1))
+                    .foregroundStyle(Color(hex: Palette.fur1))
             }
         }
         .padding(.vertical, 4)

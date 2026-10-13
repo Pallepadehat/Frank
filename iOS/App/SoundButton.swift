@@ -55,7 +55,7 @@ struct SoundButton: View {
                     .foregroundStyle(.white)
             }
             Slider(value: Binding(get: { volume }, set: { volume = $0; live.volume = $0; lastTouch = Date() }), in: 0...1)
-                .tint(Color(hex: Palette.berry2))
+                .tint(Color(hex: Palette.fur2))
             Button {
                 live.sayHi()
                 lastTouch = Date()
@@ -84,7 +84,7 @@ struct SoundButton: View {
                             Spacer()
                             if name == link.currentMac {
                                 Image(systemName: link.connected ? "checkmark" : "ellipsis")
-                                    .foregroundStyle(Color(hex: Palette.berry2))
+                                    .foregroundStyle(Color(hex: Palette.fur2))
                             }
                         }
                         .frame(minHeight: 36)
