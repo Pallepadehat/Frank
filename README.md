@@ -1,14 +1,24 @@
 <div align="center">
 
-# Frank 🦬
+<img src="docs/images/icon.png" alt="Frank's app icon" width="148">
+
+# Frank
 
 **A little brown bison who lives on your iPhone, right under your Mac's screen.**<br>
 He listens while you work, looks at what you're looking at, points at things with his own big cursor,<br>
 and, when you ask, clicks and types for you.
 
+[![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?logo=apple&logoColor=white)](#what-you-need)
+[![iOS 17+](https://img.shields.io/badge/iOS-17%2B-111?logo=apple&logoColor=white)](#what-you-need)
+[![Swift](https://img.shields.io/badge/Swift-SwiftUI-F05138?logo=swift&logoColor=white)](#contributing)
+[![On-device speech](https://img.shields.io/badge/speech-on%20device-5BA65B)](#privacy-and-safety)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm%20Noncommercial-8E532B)](#license)
+
+<br>
+
 ![Frank listening](docs/images/hero.jpg)
 
-[How it works](#how-it-works) · [Getting started](#getting-started) · [Using Frank](#using-frank) · [Privacy and safety](#privacy-and-safety) · [Contributing](#contributing)
+[What is Frank?](#what-is-frank) · [How it works](#how-it-works) · [Getting started](#getting-started) · [Using Frank](#using-frank) · [Privacy and safety](#privacy-and-safety) · [Contributing](#contributing) · [License](#license)
 
 </div>
 
@@ -135,7 +145,9 @@ The menu bar also has his mood, cursor size (48 to 120 pt), pointer trail, curso
 
 ## Contributing
 
-Issues and pull requests are welcome. The code is plain Swift and SwiftUI. The Mac app has no dependencies; the iPhone app uses WhisperKit, MLX Swift LM, swift-huggingface and swift-transformers via Swift Package Manager.
+Issues and pull requests are welcome. By contributing, you agree that your contribution is shared under the same [license](#license) as the rest of Frank.
+
+The code is plain Swift and SwiftUI. The Mac app has no dependencies; the iPhone app uses WhisperKit, MLX Swift LM, swift-huggingface and swift-transformers via Swift Package Manager.
 
 ```
 Mac/                  menu bar app
@@ -164,4 +176,17 @@ docs/images/          the pictures in this README
 
 ## License
 
-Public domain under [the Unlicense](LICENSE). Do whatever you want with Frank.
+Frank is **free for non-commercial use** under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+| ✅ You can | ❌ You can't |
+| --- | --- |
+| Use Frank yourself, for fun, study, research or hobby projects | Sell Frank, or any app, product or service built on him |
+| Read, change and learn from the code | Use him for work at a company or in a paid product |
+| Share it, and share your changes, under the same terms | Charge for access to him, or use him to make money |
+| Use him at a school, charity, research lab or public institution | Remove the copyright notice or these terms |
+
+That's the short version; [the license](LICENSE) is what counts. Want to use Frank commercially? [Open an issue](https://github.com/Pallepadehat/Frank/issues) and let's talk.
+
+**Third-party parts** keep their own licenses: the Fredoka and IBM Plex fonts are under the SIL Open Font License (see `Shared/Fonts/`), the Swift packages under their own licenses, and the downloadable models under theirs (Whisper: MIT, Qwen2.5: Apache 2.0). Use of OpenAI's API is covered by OpenAI's terms.
+
+Copyright © 2026 Patrick Jakobsen.
